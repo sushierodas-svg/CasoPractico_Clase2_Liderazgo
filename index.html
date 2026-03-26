@@ -5,892 +5,535 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Caso Práctico – Clase 2: Mi historia familiar y mi identidad</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: #0F2747;
-    min-height: 100vh;
-    padding: 24px 16px 48px;
-    color: #0F2747;
-}
-
-.contenedor {
-    max-width: 860px;
-    margin: 0 auto;
-    background: #F7F2E8;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-
-/* ── HERO ── */
-.hero {
-    background: #0F2747;
-    padding: 48px 36px 42px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-.hero::before {
-    content: '';
-    position: absolute; top: -50px; left: -50px;
-    width: 200px; height: 200px; border-radius: 50%;
-    background: rgba(201,163,78,0.07);
-}
-.hero::after {
-    content: '';
-    position: absolute; bottom: -30px; right: -30px;
-    width: 160px; height: 160px; border-radius: 50%;
-    background: rgba(201,163,78,0.05);
-}
-.hero-badge {
-    display: inline-block;
-    background: rgba(201,163,78,0.15);
-    border: 1px solid rgba(201,163,78,0.35);
-    color: #C9A34E;
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 3px; text-transform: uppercase;
-    padding: 5px 18px; border-radius: 20px;
-    margin-bottom: 18px;
-}
-.hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px; font-weight: 700;
-    color: #F7F2E8; line-height: 1.2;
-    margin-bottom: 10px;
-    position: relative; z-index: 1;
-}
-.hero-sub {
-    color: rgba(247,242,232,0.6);
-    font-size: 13px; font-weight: 300;
-    position: relative; z-index: 1;
-}
-.hero-clase {
-    display: inline-block;
-    margin-top: 16px;
-    background: rgba(201,163,78,0.12);
-    border: 1px solid rgba(201,163,78,0.25);
-    color: #C9A34E;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase;
-    padding: 4px 14px; border-radius: 4px;
-    position: relative; z-index: 1;
-}
-
-/* ── CUERPO ── */
-.cuerpo { padding: 32px 32px 40px; }
-
-/* ── BLOQUES DE INSTRUCCIÓN ── */
-.bloque-instruccion {
-    background: #fff;
-    border-left: 4px solid #C9A34E;
-    border-radius: 0 8px 8px 0;
-    padding: 16px 20px;
-    margin-bottom: 12px;
-    font-size: 13px; line-height: 1.65;
-    color: #0F2747;
-}
-.bloque-instruccion strong { color: #C9A34E; }
-
-.bloque-entrega {
-    background: rgba(15,39,71,0.05);
-    border-left: 4px solid #0F2747;
-    border-radius: 0 8px 8px 0;
-    padding: 14px 18px; margin-bottom: 28px;
-    font-size: 13px; line-height: 1.65; color: #0F2747;
-}
-.bloque-entrega strong { color: #0F2747; }
-
-/* ── SITUACIÓN ── */
-.situacion-card {
-    background: #0F2747;
-    border-radius: 12px;
-    padding: 26px 28px;
-    margin-bottom: 22px;
-    position: relative; overflow: hidden;
-}
-.situacion-card::after {
-    content: '🪞';
-    position: absolute; right: 22px; top: 18px;
-    font-size: 48px; opacity: 0.1;
-}
-.s-tag {
-    display: inline-block;
-    background: rgba(201,163,78,0.18); color: #C9A34E;
-    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
-    padding: 3px 12px; border-radius: 20px; margin-bottom: 14px;
-}
-.situacion-card h3 {
-    color: #F7F2E8; font-size: 15px;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700; margin-bottom: 10px;
-}
-.situacion-card p {
-    color: rgba(247,242,232,0.85);
-    font-size: 13px; line-height: 1.75;
-}
-.situacion-card .impulso {
-    background: rgba(201,163,78,0.12);
-    border-left: 3px solid #C9A34E;
-    border-radius: 0 8px 8px 0;
-    padding: 11px 14px; margin-top: 14px;
-    color: rgba(247,242,232,0.75);
-    font-style: italic; font-size: 12px;
-}
-
-/* ── PREGUNTA ── */
-.pregunta-card {
-    background: #fff;
-    border: 1.5px solid rgba(15,39,71,0.12);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 20px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-.pregunta-card:focus-within {
-    border-color: #C9A34E;
-    box-shadow: 0 4px 18px rgba(201,163,78,0.15);
-}
-.pregunta-label {
-    display: flex; align-items: center; gap: 14px; margin-bottom: 18px;
-}
-.pregunta-icono {
-    width: 42px; height: 42px;
-    background: #0F2747;
-    color: #C9A34E; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0;
-}
-.pregunta-titulo { font-size: 14px; font-weight: 700; color: #0F2747; line-height: 1.4; }
-.pregunta-hint { font-size: 12px; color: #4B5563; font-style: italic; font-weight: 400; margin-top: 3px; }
-
-/* ── GUÍA 3 PASOS ── */
-.guia-pasos {
-    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;
-}
-.paso {
-    flex: 1; min-width: 170px;
-    background: #F7F2E8;
-    border-radius: 8px;
-    padding: 12px 14px;
-    display: flex; align-items: flex-start; gap: 10px;
-    border: 1px solid rgba(201,163,78,0.2);
-}
-.paso-num {
-    min-width: 26px; height: 26px;
-    background: #0F2747; color: #C9A34E;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700; flex-shrink: 0;
-}
-.paso-texto { font-size: 12px; color: #4B5563; line-height: 1.45; }
-.paso-texto strong { color: #0F2747; display: block; margin-bottom: 2px; font-size: 12px; }
-
-/* ── TEXTAREA ── */
-.texto-respuesta {
-    width: 100%; min-height: 140px;
-    border: 1.5px solid rgba(15,39,71,0.15); border-radius: 8px;
-    padding: 14px 16px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px; line-height: 1.75; color: #0F2747;
-    background: #FDFBF7; resize: vertical;
-    transition: border-color 0.2s;
-}
-.texto-respuesta:focus { outline: none; border-color: #C9A34E; background: #fff; }
-.texto-respuesta::placeholder { color: #bbb; font-style: italic; }
-
-.contador-fila {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 10px; flex-wrap: wrap; gap: 8px;
-}
-.contador-texto { display: flex; gap: 16px; font-size: 12px; color: #4B5563; font-weight: 600; }
-.contador-num {
-    background: #0F2747; color: #C9A34E;
-    padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;
-}
-.contador-num.ok   { background: #2D6A4F; color: #fff; }
-.contador-num.warn { background: #C97D2E; color: #fff; }
-.contador-num.error{ background: #C0392B; color: #fff; }
-.lineas-info { font-size: 11px; color: #aaa; font-style: italic; }
-
-/* ── RÚBRICA ── */
-.rubrica-card {
-    background: #fff;
-    border: 1.5px solid rgba(15,39,71,0.1);
-    border-radius: 12px;
-    padding: 22px 24px;
-    margin-bottom: 24px;
-}
-.rubrica-card h3 {
-    color: #0F2747; font-size: 13px; font-weight: 700;
-    margin-bottom: 16px; letter-spacing: 0.5px;
-    display: flex; align-items: center; gap: 8px;
-    border-bottom: 2px solid #C9A34E; padding-bottom: 10px;
-    text-transform: uppercase;
-}
-.rubrica-grid { display: flex; flex-direction: column; gap: 8px; }
-.rubrica-fila {
-    display: flex; align-items: flex-start; gap: 14px;
-    padding: 11px 14px;
-    background: #FDFBF7;
-    border: 1px solid rgba(15,39,71,0.06);
-    border-radius: 8px;
-    transition: background 0.15s;
-}
-.rubrica-fila:hover { background: #F7F2E8; }
-.rubrica-puntaje {
-    min-width: 36px; height: 36px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; font-weight: 700; flex-shrink: 0; color: white;
-}
-.p5 { background: #0F2747; }
-.p4 { background: #2D6A4F; }
-.p3 { background: #C9A34E; }
-.p2 { background: #C97D2E; }
-.p1 { background: #C0392B; }
-.p0 { background: #4B5563; }
-.rubrica-desc { font-size: 12.5px; color: #4B5563; line-height: 1.55; padding-top: 8px; }
-.rubrica-desc strong { color: #0F2747; }
-
-/* ── BOTONES ── */
-.botones-accion { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
-.btn-evaluar {
-    flex: 1; min-width: 200px; padding: 17px 24px;
-    background: #0F2747;
-    color: #C9A34E; font-family: 'Montserrat', sans-serif;
-    font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
-    border: none; border-radius: 10px; cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 6px 20px rgba(15,39,71,0.3);
-}
-.btn-evaluar:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(15,39,71,0.4); }
-.btn-evaluar:disabled { background: #ccc; color: #999; box-shadow: none; cursor: not-allowed; }
-.btn-reiniciar {
-    padding: 17px 22px; background: transparent; color: #0F2747;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px; font-weight: 600;
-    border: 2px solid rgba(15,39,71,0.25); border-radius: 10px; cursor: pointer;
-    transition: background 0.2s;
-}
-.btn-reiniciar:hover { background: rgba(15,39,71,0.06); }
-
-/* ── RESULTADO ── */
-.resultado-final { display: none; margin-top: 8px; }
-.resultado-final.mostrar { display: block; }
-
-.puntaje-grande {
-    background: #0F2747;
-    border-radius: 14px;
-    padding: 32px 24px;
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative; overflow: hidden;
-}
-.puntaje-grande::before {
-    content: ''; position: absolute; top: -30px; right: -30px;
-    width: 150px; height: 150px; border-radius: 50%;
-    background: rgba(201,163,78,0.08);
-}
-.puntaje-grande .label {
-    font-size: 10px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 2.5px; color: rgba(247,242,232,0.5); margin-bottom: 10px;
-}
-.puntaje-grande .numero {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 72px; font-weight: 700; line-height: 1;
-    color: #F7F2E8;
-}
-.puntaje-grande .de-cinco { font-size: 28px; color: rgba(247,242,232,0.4); }
-.puntaje-grande .nivel {
-    display: inline-block; margin-top: 14px;
-    padding: 5px 20px; border-radius: 20px;
-    font-size: 13px; font-weight: 600;
-}
-.nivel-5 { background: rgba(15,39,71,0.5);   color: #C9A34E; border: 1.5px solid rgba(201,163,78,0.4); }
-.nivel-4 { background: rgba(45,106,79,0.4);  color: #7dffc2; border: 1.5px solid rgba(45,106,79,0.5); }
-.nivel-3 { background: rgba(201,163,78,0.3); color: #ffe08a; border: 1.5px solid rgba(201,163,78,0.5); }
-.nivel-2 { background: rgba(201,125,46,0.3); color: #ffc08a; border: 1.5px solid rgba(201,125,46,0.5); }
-.nivel-1 { background: rgba(192,57,43,0.3);  color: #ffaaaa; border: 1.5px solid rgba(192,57,43,0.5); }
-.nivel-0 { background: rgba(75,85,99,0.3);   color: #ccc;    border: 1.5px solid rgba(75,85,99,0.4); }
-
-/* ── DETALLE ── */
-.resultado-detalle {
-    border: 2px solid rgba(15,39,71,0.15);
-    border-radius: 12px; overflow: hidden; margin-bottom: 20px;
-}
-.detalle-header {
-    background: #0F2747;
-    padding: 18px 24px;
-    display: flex; align-items: center; gap: 14px;
-}
-.detalle-header .icon { font-size: 24px; }
-.detalle-header h3 { color: #F7F2E8; font-size: 15px; }
-.detalle-header p  { color: rgba(247,242,232,0.6); font-size: 12px; margin-top: 2px; }
-.detalle-cuerpo { padding: 22px; background: #fff; }
-
-.criterio-item {
-    background: rgba(247,242,232,0.6);
-    border-left: 4px solid #C9A34E;
-    border-radius: 0 8px 8px 0;
-    padding: 13px 16px; margin-bottom: 12px;
-}
-.criterio-titulo { font-weight: 700; color: #0F2747; margin-bottom: 5px; font-size: 13px; }
-.criterio-cal    { color: #4B5563; font-size: 12.5px; line-height: 1.6; }
-.criterio-rec {
-    margin-top: 10px; padding: 9px 12px;
-    background: rgba(201,163,78,0.1);
-    border-left: 3px solid #C9A34E;
-    border-radius: 4px; font-size: 12px; color: #4B5563;
-}
-.criterio-rec strong { color: #0F2747; }
-.criterio-alerta { background: rgba(192,57,43,0.06); border-left: 4px solid #C0392B; }
-.criterio-alerta .criterio-titulo { color: #C0392B; }
-
-.mensaje-general {
-    background: #0F2747;
-    border-radius: 10px;
-    padding: 18px 22px; margin-top: 14px;
-    font-size: 13px; color: #F7F2E8;
-    font-weight: 500; line-height: 1.65;
-}
-
-/* ── DESCARGA ── */
-.descarga-zona {
-    margin-top: 20px; padding-top: 20px;
-    border-top: 2px dashed rgba(15,39,71,0.15);
-    display: flex; flex-direction: column; gap: 10px;
-}
-.descarga-zona p { font-size: 12.5px; color: #4B5563; text-align: center; }
-.btn-descargar {
-    width: 100%; padding: 16px 24px;
-    background: #C9A34E;
-    color: #0F2747; font-family: 'Montserrat', sans-serif;
-    font-size: 13px; font-weight: 700;
-    border: none; border-radius: 10px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    transition: transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 6px 20px rgba(201,163,78,0.35);
-    letter-spacing: 0.3px;
-}
-.btn-descargar:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,163,78,0.45); }
-.btn-descargar:disabled { background: #ccc; color: #999; box-shadow: none; cursor: not-allowed; }
-
-/* ── CERTIFICADO — se mueve via JS durante la captura ── */
-#certificado {
-    position: fixed;
-    left: -9999px;
-    top: 0;
-    width: 860px;
-    background: #F7F2E8;
-    font-family: 'Montserrat', sans-serif;
-    z-index: -1;
-}
-
-/* ── PIE ── */
-.pie {
-    text-align: center; padding: 16px 24px;
-    font-size: 11px; color: rgba(15,39,71,0.35);
-    border-top: 1px solid rgba(15,39,71,0.08);
-    letter-spacing: 1px;
-}
-
-@media (max-width: 600px) {
-    .cuerpo { padding: 20px 16px 32px; }
-    .hero h1 { font-size: 28px; }
-    .botones-accion { flex-direction: column; }
-    .guia-pasos { flex-direction: column; }
-}
+body { font-family: 'Montserrat', sans-serif; background: #0F2747; min-height: 100vh; padding: 24px 16px 48px; color: #0F2747; }
+.contenedor { max-width: 860px; margin: 0 auto; background: #F7F2E8; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.hero { background: #0F2747; padding: 48px 36px 42px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-50px; left:-50px; width:200px; height:200px; border-radius:50%; background:rgba(201,163,78,0.07); }
+.hero::after  { content:''; position:absolute; bottom:-30px; right:-30px; width:160px; height:160px; border-radius:50%; background:rgba(201,163,78,0.05); }
+.hero-badge { display:inline-block; background:rgba(201,163,78,0.15); border:1px solid rgba(201,163,78,0.35); color:#C9A34E; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; padding:5px 18px; border-radius:20px; margin-bottom:18px; }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:700; color:#F7F2E8; line-height:1.2; margin-bottom:10px; position:relative; z-index:1; }
+.hero-sub { color:rgba(247,242,232,0.6); font-size:13px; font-weight:300; position:relative; z-index:1; }
+.hero-clase { display:inline-block; margin-top:16px; background:rgba(201,163,78,0.12); border:1px solid rgba(201,163,78,0.25); color:#C9A34E; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; padding:4px 14px; border-radius:4px; position:relative; z-index:1; }
+.cuerpo { padding:32px 32px 40px; }
+.bloque-instruccion { background:#fff; border-left:4px solid #C9A34E; border-radius:0 8px 8px 0; padding:16px 20px; margin-bottom:12px; font-size:13px; line-height:1.65; color:#0F2747; }
+.bloque-instruccion strong { color:#C9A34E; }
+.bloque-entrega { background:rgba(15,39,71,0.05); border-left:4px solid #0F2747; border-radius:0 8px 8px 0; padding:14px 18px; margin-bottom:28px; font-size:13px; line-height:1.65; color:#0F2747; }
+.bloque-entrega strong { color:#0F2747; }
+.situacion-card { background:#0F2747; border-radius:12px; padding:26px 28px; margin-bottom:22px; position:relative; overflow:hidden; }
+.situacion-card::after { content:'🪞'; position:absolute; right:22px; top:18px; font-size:48px; opacity:0.1; }
+.s-tag { display:inline-block; background:rgba(201,163,78,0.18); color:#C9A34E; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; padding:3px 12px; border-radius:20px; margin-bottom:14px; }
+.situacion-card h3 { color:#F7F2E8; font-size:15px; font-family:'Cormorant Garamond',serif; font-weight:700; margin-bottom:10px; }
+.situacion-card p { color:rgba(247,242,232,0.85); font-size:13px; line-height:1.75; }
+.situacion-card .impulso { background:rgba(201,163,78,0.12); border-left:3px solid #C9A34E; border-radius:0 8px 8px 0; padding:11px 14px; margin-top:14px; color:rgba(247,242,232,0.75); font-style:italic; font-size:12px; }
+.pregunta-card { background:#fff; border:1.5px solid rgba(15,39,71,0.12); border-radius:12px; padding:24px; margin-bottom:20px; transition:border-color 0.2s,box-shadow 0.2s; }
+.pregunta-card:focus-within { border-color:#C9A34E; box-shadow:0 4px 18px rgba(201,163,78,0.15); }
+.pregunta-label { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.pregunta-icono { width:42px; height:42px; background:#0F2747; color:#C9A34E; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.pregunta-titulo { font-size:14px; font-weight:700; color:#0F2747; line-height:1.4; }
+.pregunta-hint { font-size:12px; color:#4B5563; font-style:italic; font-weight:400; margin-top:3px; }
+.guia-pasos { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+.paso { flex:1; min-width:170px; background:#F7F2E8; border-radius:8px; padding:12px 14px; display:flex; align-items:flex-start; gap:10px; border:1px solid rgba(201,163,78,0.2); }
+.paso-num { min-width:26px; height:26px; background:#0F2747; color:#C9A34E; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+.paso-texto { font-size:12px; color:#4B5563; line-height:1.45; }
+.paso-texto strong { color:#0F2747; display:block; margin-bottom:2px; font-size:12px; }
+.texto-respuesta { width:100%; min-height:140px; border:1.5px solid rgba(15,39,71,0.15); border-radius:8px; padding:14px 16px; font-family:'Montserrat',sans-serif; font-size:14px; line-height:1.75; color:#0F2747; background:#FDFBF7; resize:vertical; transition:border-color 0.2s; }
+.texto-respuesta:focus { outline:none; border-color:#C9A34E; background:#fff; }
+.texto-respuesta::placeholder { color:#bbb; font-style:italic; }
+.contador-fila { display:flex; justify-content:space-between; align-items:center; margin-top:10px; flex-wrap:wrap; gap:8px; }
+.contador-texto { display:flex; gap:16px; font-size:12px; color:#4B5563; font-weight:600; }
+.contador-num { background:#0F2747; color:#C9A34E; padding:2px 10px; border-radius:12px; font-size:11px; font-weight:700; }
+.contador-num.ok    { background:#2D6A4F; color:#fff; }
+.contador-num.warn  { background:#C97D2E; color:#fff; }
+.contador-num.error { background:#C0392B; color:#fff; }
+.lineas-info { font-size:11px; color:#aaa; font-style:italic; }
+.rubrica-card { background:#fff; border:1.5px solid rgba(15,39,71,0.1); border-radius:12px; padding:22px 24px; margin-bottom:24px; }
+.rubrica-card h3 { color:#0F2747; font-size:13px; font-weight:700; margin-bottom:16px; letter-spacing:0.5px; display:flex; align-items:center; gap:8px; border-bottom:2px solid #C9A34E; padding-bottom:10px; text-transform:uppercase; }
+.rubrica-grid { display:flex; flex-direction:column; gap:8px; }
+.rubrica-fila { display:flex; align-items:flex-start; gap:14px; padding:11px 14px; background:#FDFBF7; border:1px solid rgba(15,39,71,0.06); border-radius:8px; }
+.rubrica-puntaje { min-width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; flex-shrink:0; color:white; }
+.p5{background:#0F2747;} .p4{background:#2D6A4F;} .p3{background:#C9A34E;} .p2{background:#C97D2E;} .p1{background:#C0392B;} .p0{background:#4B5563;}
+.rubrica-desc { font-size:12.5px; color:#4B5563; line-height:1.55; padding-top:8px; }
+.rubrica-desc strong { color:#0F2747; }
+.botones-accion { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px; }
+.btn-evaluar { flex:1; min-width:200px; padding:17px 24px; background:#0F2747; color:#C9A34E; font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.5px; border:none; border-radius:10px; cursor:pointer; transition:transform 0.15s,box-shadow 0.2s; box-shadow:0 6px 20px rgba(15,39,71,0.3); }
+.btn-evaluar:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 10px 28px rgba(15,39,71,0.4); }
+.btn-evaluar:disabled { background:#ccc; color:#999; box-shadow:none; cursor:not-allowed; }
+.btn-reiniciar { padding:17px 22px; background:transparent; color:#0F2747; font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; border:2px solid rgba(15,39,71,0.25); border-radius:10px; cursor:pointer; }
+.resultado-final { display:none; margin-top:8px; }
+.resultado-final.mostrar { display:block; }
+.puntaje-grande { background:#0F2747; border-radius:14px; padding:32px 24px; text-align:center; margin-bottom:20px; position:relative; overflow:hidden; }
+.puntaje-grande .label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:2.5px; color:rgba(247,242,232,0.5); margin-bottom:10px; }
+.puntaje-grande .numero { font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:700; line-height:1; color:#F7F2E8; }
+.puntaje-grande .de-cinco { font-size:28px; color:rgba(247,242,232,0.4); }
+.puntaje-grande .nivel { display:inline-block; margin-top:14px; padding:5px 20px; border-radius:20px; font-size:13px; font-weight:600; }
+.nivel-5{background:rgba(15,39,71,0.5);color:#C9A34E;border:1.5px solid rgba(201,163,78,0.4);}
+.nivel-4{background:rgba(45,106,79,0.4);color:#7dffc2;border:1.5px solid rgba(45,106,79,0.5);}
+.nivel-3{background:rgba(201,163,78,0.3);color:#ffe08a;border:1.5px solid rgba(201,163,78,0.5);}
+.nivel-2{background:rgba(201,125,46,0.3);color:#ffc08a;border:1.5px solid rgba(201,125,46,0.5);}
+.nivel-1{background:rgba(192,57,43,0.3);color:#ffaaaa;border:1.5px solid rgba(192,57,43,0.5);}
+.nivel-0{background:rgba(75,85,99,0.3);color:#ccc;border:1.5px solid rgba(75,85,99,0.4);}
+.resultado-detalle { border:2px solid rgba(15,39,71,0.15); border-radius:12px; overflow:hidden; margin-bottom:20px; }
+.detalle-header { background:#0F2747; padding:18px 24px; display:flex; align-items:center; gap:14px; }
+.detalle-header .icon { font-size:24px; }
+.detalle-header h3 { color:#F7F2E8; font-size:15px; }
+.detalle-header p  { color:rgba(247,242,232,0.6); font-size:12px; margin-top:2px; }
+.detalle-cuerpo { padding:22px; background:#fff; }
+.criterio-item { background:rgba(247,242,232,0.6); border-left:4px solid #C9A34E; border-radius:0 8px 8px 0; padding:13px 16px; margin-bottom:12px; }
+.criterio-titulo { font-weight:700; color:#0F2747; margin-bottom:5px; font-size:13px; }
+.criterio-cal    { color:#4B5563; font-size:12.5px; line-height:1.6; }
+.criterio-rec    { margin-top:10px; padding:9px 12px; background:rgba(201,163,78,0.1); border-left:3px solid #C9A34E; border-radius:4px; font-size:12px; color:#4B5563; }
+.criterio-rec strong { color:#0F2747; }
+.criterio-alerta { background:rgba(192,57,43,0.06); border-left:4px solid #C0392B; }
+.criterio-alerta .criterio-titulo { color:#C0392B; }
+.mensaje-general { background:#0F2747; border-radius:10px; padding:18px 22px; margin-top:14px; font-size:13px; color:#F7F2E8; font-weight:500; line-height:1.65; }
+.descarga-zona { margin-top:20px; padding-top:20px; border-top:2px dashed rgba(15,39,71,0.15); display:flex; flex-direction:column; gap:10px; }
+.descarga-zona p { font-size:12.5px; color:#4B5563; text-align:center; }
+.btn-descargar { width:100%; padding:16px 24px; background:#C9A34E; color:#0F2747; font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700; border:none; border-radius:10px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px; transition:transform 0.15s,box-shadow 0.2s; box-shadow:0 6px 20px rgba(201,163,78,0.35); }
+.btn-descargar:hover:not(:disabled) { transform:translateY(-2px); }
+.btn-descargar:disabled { background:#ccc; color:#999; box-shadow:none; cursor:not-allowed; }
+.pie { text-align:center; padding:16px 24px; font-size:11px; color:rgba(15,39,71,0.35); border-top:1px solid rgba(15,39,71,0.08); letter-spacing:1px; }
+@media(max-width:600px){ .cuerpo{padding:20px 16px 32px;} .hero h1{font-size:28px;} .botones-accion,.guia-pasos{flex-direction:column;} }
 </style>
 </head>
 <body>
 
 <div class="contenedor">
+  <div class="hero">
+    <div class="hero-badge">Liderazgo · Caso Práctico</div>
+    <h1>Mi historia familiar<br>y mi identidad</h1>
+    <p class="hero-sub">Actividad de aplicación &nbsp;·&nbsp; Rúbrica 0–5 puntos</p>
+    <div class="hero-clase">Clase 2 · Nivel 1</div>
+  </div>
 
-    <!-- HERO -->
-    <div class="hero">
-        <div class="hero-badge">Liderazgo · Caso Práctico</div>
-        <h1>Mi historia familiar<br>y mi identidad</h1>
-        <p class="hero-sub">Actividad de aplicación &nbsp;·&nbsp; Rúbrica 0–5 puntos</p>
-        <div class="hero-clase">Clase 2 · Nivel 1</div>
+  <div class="cuerpo">
+    <div class="bloque-instruccion">📋 <strong>Instrucciones:</strong> Lee la situación con cuidado, responde en 4–6 líneas y presiona <strong>"Evaluar mi respuesta"</strong> para conocer tu puntaje y retroalimentación. Luego descarga tu certificado y compártelo con tu tutor.</div>
+    <div class="bloque-entrega">📤 <strong>¿Cómo entregar?</strong> Descarga tu certificado como imagen PNG y súbelo en la sección de tareas de tu aula virtual.</div>
+
+    <div class="situacion-card">
+      <span class="s-tag">🪞 Situación del caso</span>
+      <h3>Reconociendo un patrón de tu historia…</h3>
+      <p>Te das cuenta de que, cuando alguien te corrige o te contradice, reaccionas cerrándote o poniéndote a la defensiva. Reconoces que ese patrón lo viste muchas veces en tu historia familiar o en las personas que más te formaron.</p>
+      <div class="impulso">⚡ El patrón: cerrarte, defenderte, o incluso atacar — en lugar de escuchar y elegir cómo responder.</div>
     </div>
 
-    <div class="cuerpo">
-
-        <!-- INSTRUCCIONES -->
-        <div class="bloque-instruccion">
-            📋 <strong>Instrucciones:</strong> Lee la situación con cuidado, responde en 4–6 líneas y presiona <strong>"Evaluar mi respuesta"</strong> para conocer tu puntaje y retroalimentación. Luego descarga tu certificado y compártelo con tu tutor.
+    <div class="pregunta-card">
+      <div class="pregunta-label">
+        <div class="pregunta-icono">✍️</div>
+        <div>
+          <div class="pregunta-titulo">En 4–6 líneas, responde como líder:</div>
+          <div class="pregunta-hint">No te quedes solo en la queja o en la culpa. Lidera tu respuesta.</div>
         </div>
-        <div class="bloque-entrega">
-            📤 <strong>¿Cómo entregar?</strong> Descarga tu certificado como imagen y súbelo en la sección de tareas de tu aula virtual, o compártelo con tu tutor según las instrucciones de tu clase.
+      </div>
+      <div class="guia-pasos">
+        <div class="paso"><div class="paso-num">1</div><div class="paso-texto"><strong>Identifica el patrón</strong>¿Qué conducta o reacción reconoces en ti?</div></div>
+        <div class="paso"><div class="paso-num">2</div><div class="paso-texto"><strong>Explica su efecto hoy</strong>¿Cómo te afecta en tu vida o relaciones actuales?</div></div>
+        <div class="paso"><div class="paso-num">3</div><div class="paso-texto"><strong>Decide algo concreto</strong>¿Qué harás diferente y cuándo empezarás?</div></div>
+      </div>
+      <textarea class="texto-respuesta" id="respuesta" rows="6"
+        placeholder="Escribe aquí tu respuesta…&#10;Ejemplo: 'Cuando alguien me corrige, noto que… Ese patrón me afecta hoy porque… A partir de ahora voy a…'"
+        oninput="actualizarContador()"></textarea>
+      <div class="contador-fila">
+        <div class="contador-texto">
+          <span>Palabras: <span class="contador-num" id="cntWords">0</span></span>
+          <span>Líneas aprox.: <span class="contador-num" id="cntLines">0</span></span>
         </div>
-
-        <!-- SITUACIÓN -->
-        <div class="situacion-card">
-            <span class="s-tag">🪞 Situación del caso</span>
-            <h3>Reconociendo un patrón de tu historia…</h3>
-            <p>Te das cuenta de que, cuando alguien te corrige o te contradice, reaccionas cerrándote o poniéndote a la defensiva. Reconoces que ese patrón lo viste muchas veces en tu historia familiar o en las personas que más te formaron.</p>
-            <div class="impulso">
-                ⚡ El patrón: cerrarte, defenderte, o incluso atacar — en lugar de escuchar y elegir cómo responder.
-            </div>
-        </div>
-
-        <!-- PREGUNTA -->
-        <div class="pregunta-card">
-            <div class="pregunta-label">
-                <div class="pregunta-icono">✍️</div>
-                <div>
-                    <div class="pregunta-titulo">En 4–6 líneas, responde como líder:</div>
-                    <div class="pregunta-hint">No te quedes solo en la queja o en la culpa. Lidera tu respuesta.</div>
-                </div>
-            </div>
-
-            <div class="guia-pasos">
-                <div class="paso">
-                    <div class="paso-num">1</div>
-                    <div class="paso-texto">
-                        <strong>Identifica el patrón</strong>
-                        ¿Qué conducta o reacción reconoces en ti?
-                    </div>
-                </div>
-                <div class="paso">
-                    <div class="paso-num">2</div>
-                    <div class="paso-texto">
-                        <strong>Explica su efecto hoy</strong>
-                        ¿Cómo te afecta en tu vida o relaciones actuales?
-                    </div>
-                </div>
-                <div class="paso">
-                    <div class="paso-num">3</div>
-                    <div class="paso-texto">
-                        <strong>Decide algo concreto</strong>
-                        ¿Qué harás diferente y cuándo empezarás?
-                    </div>
-                </div>
-            </div>
-
-            <textarea class="texto-respuesta" id="respuesta" rows="6"
-                placeholder="Escribe aquí tu respuesta…&#10;Ejemplo: 'Cuando alguien me corrige, noto que… Ese patrón me afecta hoy porque… A partir de ahora voy a…'"
-                oninput="actualizarContador()"></textarea>
-
-            <div class="contador-fila">
-                <div class="contador-texto">
-                    <span>Palabras: <span class="contador-num" id="cntWords">0</span></span>
-                    <span>Líneas aprox.: <span class="contador-num" id="cntLines">0</span></span>
-                </div>
-                <div class="lineas-info">Mínimo 4 líneas · Máximo 6 líneas</div>
-            </div>
-        </div>
-
-        <!-- RÚBRICA -->
-        <div class="rubrica-card">
-            <h3>🏅 Rúbrica de evaluación (0–5 puntos)</h3>
-            <div class="rubrica-grid">
-                <div class="rubrica-fila">
-                    <div class="rubrica-puntaje p5">5</div>
-                    <div class="rubrica-desc"><strong>Identidad con liderazgo:</strong> Identifica claramente el patrón, explica su efecto actual y propone una decisión concreta y realista. Tono honesto y constructivo.</div>
-                </div>
-                <div class="rubrica-fila">
-                    <div class="rubrica-puntaje p4">4</div>
-                    <div class="rubrica-desc"><strong>Muy bien logrado:</strong> Bien logrado; falta precisión en el efecto actual o en la decisión concreta.</div>
-                </div>
-                <div class="rubrica-fila">
-                    <div class="rubrica-puntaje p3">3</div>
-                    <div class="rubrica-desc"><strong>En proceso:</strong> Intención correcta pero respuesta general. El patrón se nombra, pero la decisión es vaga.</div>
-                </div>
-                <div class="rubrica-fila">
-                    <div class="rubrica-puntaje p2">2</div>
-                    <div class="rubrica-desc"><strong>Necesita mejorar:</strong> Reconoce el patrón pero no propone un cambio claro, o la respuesta culpa y no lidera.</div>
-                </div>
-                <div class="rubrica-fila">
-                    <div class="rubrica-puntaje p1">1</div>
-                    <div class="rubrica-desc"><strong>Solo queja o culpa:</strong> La respuesta se queda en frustración, victimismo o acusación sin proponer nada.</div>
-                </div>
-                <div class="rubrica-fila">
-                    <div class="rubrica-puntaje p0">0</div>
-                    <div class="rubrica-desc"><strong>Sin respuesta:</strong> No escribió nada relevante.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BOTONES -->
-        <div class="botones-accion">
-            <button class="btn-evaluar" id="btnEvaluar" onclick="evaluarRespuesta()" disabled>
-                🏅 Evaluar mi respuesta
-            </button>
-            <button class="btn-reiniciar" onclick="reiniciar()">🔄 Limpiar</button>
-        </div>
-
-        <!-- RESULTADO -->
-        <div class="resultado-final" id="resultadoFinal">
-
-            <div class="puntaje-grande">
-                <div class="label">Tu puntaje</div>
-                <div class="numero" id="numeroPuntaje">0<span class="de-cinco">/5</span></div>
-                <div class="nivel" id="nivelTexto">—</div>
-            </div>
-
-            <div class="resultado-detalle">
-                <div class="detalle-header">
-                    <div class="icon">📋</div>
-                    <div>
-                        <h3>Retroalimentación detallada</h3>
-                        <p>Mi historia familiar y mi identidad · Clase 2</p>
-                    </div>
-                </div>
-                <div class="detalle-cuerpo">
-                    <div id="criteriosEvaluacion"></div>
-                    <div class="mensaje-general" id="mensajeGeneral"></div>
-                    <div class="descarga-zona">
-                        <p>📤 Descarga tu certificado y compártelo con tu tutor en la plataforma del curso.</p>
-                        <button class="btn-descargar" id="btnDescargar" onclick="descargarCertificado()">
-                            🎓 Descargar mi certificado
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div><!-- /cuerpo -->
-
-    <div class="pie">Liderazgo &nbsp;·&nbsp; Clase 2 · Mi historia familiar y mi identidad &nbsp;·&nbsp; Material educativo interactivo</div>
-
-</div><!-- /contenedor -->
-
-
-<!-- ══════════════════════════════════
-     CERTIFICADO DESCARGABLE
-     Oculto fuera de pantalla; se mueve
-     a posición visible solo durante
-     la captura de html2canvas.
-══════════════════════════════════ -->
-<div id="certificado">
-
-    <!-- Cabecera dorada -->
-    <div style="background:#0F2747; padding:0; position:relative; overflow:hidden;">
-        <div style="height:6px; background:linear-gradient(90deg,#C9A34E,#E8C97A,#C9A34E);"></div>
-        <div style="padding:36px 40px 30px; text-align:center; position:relative;">
-            <div style="display:inline-block; background:rgba(201,163,78,0.15); border:1px solid rgba(201,163,78,0.35); color:#C9A34E; font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:4px 16px; border-radius:20px; margin-bottom:14px;">Liderazgo · Caso Práctico</div>
-            <h1 style="font-family:'Montserrat',sans-serif; font-size:22px; font-weight:700; color:#F7F2E8; margin-bottom:6px;">Mi historia familiar y mi identidad</h1>
-            <p style="color:rgba(247,242,232,0.6); font-size:11px; font-weight:300; letter-spacing:0.5px;">Clase 2 · Nivel 1 · Curso de Liderazgo Extraordinarios</p>
-        </div>
-        <div style="height:4px; background:linear-gradient(90deg,transparent,rgba(201,163,78,0.3),transparent);"></div>
+        <div class="lineas-info">Mínimo 4 líneas · Máximo 6 líneas</div>
+      </div>
     </div>
 
-    <!-- Cuerpo del certificado -->
-    <div style="padding:30px 40px; background:#F7F2E8;">
-
-        <!-- Info del estudiante -->
-        <div style="display:flex; gap:0; background:#fff; border-radius:10px; overflow:hidden; margin-bottom:24px; border:1px solid rgba(15,39,71,0.1);">
-            <div style="flex:1; padding:14px 18px; border-right:1px solid rgba(15,39,71,0.08);">
-                <div style="font-size:9px; color:#C9A34E; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Estudiante</div>
-                <div id="certEstudiante" style="font-size:15px; font-weight:700; color:#0F2747;">—</div>
-            </div>
-            <div style="flex:1; padding:14px 18px; border-right:1px solid rgba(15,39,71,0.08);">
-                <div style="font-size:9px; color:#C9A34E; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Fecha</div>
-                <div id="certFecha" style="font-size:14px; font-weight:600; color:#0F2747;">—</div>
-            </div>
-            <div style="flex:1; padding:14px 18px; border-right:1px solid rgba(15,39,71,0.08);">
-                <div style="font-size:9px; color:#C9A34E; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Puntaje</div>
-                <div id="certPuntaje" style="font-size:22px; font-weight:700; color:#0F2747;">—</div>
-            </div>
-            <div style="flex:1; padding:14px 18px;">
-                <div style="font-size:9px; color:#C9A34E; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Nivel</div>
-                <div id="certNivel" style="font-size:13px; font-weight:600; color:#0F2747;">—</div>
-            </div>
-        </div>
-
-        <!-- Respuesta — usa div en lugar de p para evitar corte de html2canvas -->
-        <div style="margin-bottom:20px;">
-            <div style="font-size:9px; font-weight:700; color:#0F2747; letter-spacing:2px; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid #C9A34E; margin-bottom:12px;">✍️ Respuesta del estudiante</div>
-            <div style="background:#fff; border-left:4px solid #C9A34E; border-radius:0 8px 8px 0; padding:14px 18px;">
-                <div id="certRespuesta" style="font-size:12px; color:#0F2747; line-height:1.75; white-space:pre-wrap; font-family:'Montserrat',sans-serif;"></div>
-            </div>
-        </div>
-
-        <!-- Retroalimentación -->
-        <div style="margin-bottom:20px;">
-            <div style="font-size:9px; font-weight:700; color:#0F2747; letter-spacing:2px; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid #2D6A4F; margin-bottom:12px;">📋 Retroalimentación</div>
-            <div id="certCriterios"></div>
-            <div id="certMensaje" style="background:#0F2747; border-radius:8px; padding:14px 18px; margin-top:10px; font-size:11.5px; color:#F7F2E8; font-weight:500; line-height:1.65; font-family:'Montserrat',sans-serif;"></div>
-        </div>
-
-        <!-- Rúbrica compacta -->
-        <div style="margin-bottom:20px;">
-            <div style="font-size:9px; font-weight:700; color:#0F2747; letter-spacing:2px; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid #C9A34E; margin-bottom:12px;">🏅 Rúbrica de referencia</div>
-            <table style="width:100%; border-collapse:collapse; font-size:11px;">
-                <tr style="background:#fff;">
-                    <td style="padding:8px 12px; width:44px;"><div style="width:30px;height:30px;border-radius:50%;background:#0F2747;color:#C9A34E;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">5</div></td>
-                    <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Identifica claramente el patrón, explica su efecto actual y propone una decisión concreta y realista.</td>
-                </tr>
-                <tr style="background:rgba(247,242,232,0.6);">
-                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#2D6A4F;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">4</div></td>
-                    <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Bien logrado; falta precisión en el efecto o en la decisión concreta.</td>
-                </tr>
-                <tr style="background:#fff;">
-                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#C9A34E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">3</div></td>
-                    <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Intención correcta pero respuesta general. El patrón se nombra, pero la decisión es vaga.</td>
-                </tr>
-                <tr style="background:rgba(247,242,232,0.6);">
-                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#C97D2E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">2</div></td>
-                    <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Reconoce el patrón pero no propone un cambio claro, o la respuesta culpa y no lidera.</td>
-                </tr>
-                <tr style="background:#fff;">
-                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#C0392B;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">1</div></td>
-                    <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">La respuesta se queda en queja, culpa o victimismo sin proponer nada.</td>
-                </tr>
-                <tr style="background:rgba(247,242,232,0.6);">
-                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#4B5563;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">0</div></td>
-                    <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Sin respuesta.</td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Frase de cierre -->
-        <div style="background:#0F2747; border-radius:10px; padding:22px 28px; text-align:center; margin-bottom:4px;">
-            <div style="font-size:9px; color:#C9A34E; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:10px;">Recomendación final</div>
-            <div style="font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:#F7F2E8; line-height:1.4; margin-bottom:8px;">"La identidad no se demuestra contando tu historia,<br>sino en lo que decides hacer con ella."</div>
-            <div style="font-size:11px; color:rgba(247,242,232,0.6);">El liderazgo empieza cuando tú eliges, no cuando tu historia manda.</div>
-        </div>
-
-        <!-- Pie -->
-        <div style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(15,39,71,0.12); text-align:center; font-size:9px; color:rgba(15,39,71,0.35); letter-spacing:1.5px; text-transform:uppercase;">
-            Liderazgo &nbsp;·&nbsp; Clase 2 &nbsp;·&nbsp; Extraordinarios &nbsp;·&nbsp; Material educativo interactivo
-        </div>
+    <div class="rubrica-card">
+      <h3>🏅 Rúbrica de evaluación (0–5 puntos)</h3>
+      <div class="rubrica-grid">
+        <div class="rubrica-fila"><div class="rubrica-puntaje p5">5</div><div class="rubrica-desc"><strong>Identidad con liderazgo:</strong> Identifica claramente el patrón, explica su efecto actual y propone una decisión concreta y realista.</div></div>
+        <div class="rubrica-fila"><div class="rubrica-puntaje p4">4</div><div class="rubrica-desc"><strong>Muy bien logrado:</strong> Bien logrado; falta precisión en el efecto actual o en la decisión concreta.</div></div>
+        <div class="rubrica-fila"><div class="rubrica-puntaje p3">3</div><div class="rubrica-desc"><strong>En proceso:</strong> Intención correcta pero respuesta general. El patrón se nombra, pero la decisión es vaga.</div></div>
+        <div class="rubrica-fila"><div class="rubrica-puntaje p2">2</div><div class="rubrica-desc"><strong>Necesita mejorar:</strong> Reconoce el patrón pero no propone un cambio claro.</div></div>
+        <div class="rubrica-fila"><div class="rubrica-puntaje p1">1</div><div class="rubrica-desc"><strong>Solo queja o culpa:</strong> La respuesta se queda en frustración sin proponer nada.</div></div>
+        <div class="rubrica-fila"><div class="rubrica-puntaje p0">0</div><div class="rubrica-desc"><strong>Sin respuesta:</strong> No escribió nada relevante.</div></div>
+      </div>
     </div>
 
-    <!-- Franja dorada de cierre -->
-    <div style="height:5px; background:linear-gradient(90deg,#C9A34E,#E8C97A,#C9A34E);"></div>
+    <div class="botones-accion">
+      <button class="btn-evaluar" id="btnEvaluar" onclick="evaluarRespuesta()" disabled>🏅 Evaluar mi respuesta</button>
+      <button class="btn-reiniciar" onclick="reiniciar()">🔄 Limpiar</button>
+    </div>
+
+    <div class="resultado-final" id="resultadoFinal">
+      <div class="puntaje-grande">
+        <div class="label">Tu puntaje</div>
+        <div class="numero" id="numeroPuntaje">0<span class="de-cinco">/5</span></div>
+        <div class="nivel" id="nivelTexto">—</div>
+      </div>
+      <div class="resultado-detalle">
+        <div class="detalle-header">
+          <div class="icon">📋</div>
+          <div><h3>Retroalimentación detallada</h3><p>Mi historia familiar y mi identidad · Clase 2</p></div>
+        </div>
+        <div class="detalle-cuerpo">
+          <div id="criteriosEvaluacion"></div>
+          <div class="mensaje-general" id="mensajeGeneral"></div>
+          <div class="descarga-zona">
+            <p>📤 Descarga tu certificado como PNG y compártelo con tu tutor.</p>
+            <button class="btn-descargar" id="btnDescargar" onclick="descargarCertificado()">🎓 Descargar mi certificado PNG</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pie">Liderazgo &nbsp;·&nbsp; Clase 2 · Mi historia familiar y mi identidad &nbsp;·&nbsp; Material educativo interactivo</div>
 </div>
 
+<canvas id="certCanvas" style="display:none;"></canvas>
 
 <script>
-/* ─── CONTADORES ─── */
-function contarPalabras(t) {
-    return t.trim() === '' ? 0 : t.trim().split(/\s+/).length;
+/* =========================================================
+   DATOS GLOBALES DEL CERTIFICADO
+   ========================================================= */
+var G = {
+  nombre:'', fecha:'', puntaje:'', nivel:'', respuesta:'', mensaje:'',
+  criterios:[]
+};
+
+/* =========================================================
+   CONTADORES
+   ========================================================= */
+function contarPalabras(t){ return t.trim()===''?0:t.trim().split(/\s+/).length; }
+function contarLineas(t){
+  if(t.trim()==='') return 0;
+  var s=t.split(/\n/).filter(function(l){return l.trim().length>0;}).length;
+  return Math.max(s, Math.ceil(contarPalabras(t)/11));
 }
-function contarLineas(t) {
-    if (t.trim() === '') return 0;
-    const porSaltos  = t.split(/\n/).filter(function(l){ return l.trim().length > 0; }).length;
-    const porPalabras = Math.ceil(contarPalabras(t) / 11);
-    return Math.max(porSaltos, porPalabras);
-}
-
-function actualizarContador() {
-    var val   = document.getElementById('respuesta').value;
-    var words = contarPalabras(val);
-    var lines = contarLineas(val);
-    var elW   = document.getElementById('cntWords');
-    var elL   = document.getElementById('cntLines');
-
-    elW.textContent = words;
-    elL.textContent = lines;
-
-    elW.className = 'contador-num' + (words >= 40 ? ' ok' : words >= 20 ? ' warn' : '');
-    elL.className = 'contador-num' + (lines >= 4 && lines <= 6 ? ' ok' : lines > 6 ? ' error' : lines >= 2 ? ' warn' : '');
-
-    document.getElementById('btnEvaluar').disabled = words < 10;
-}
-
-/* ─── EVALUACIÓN ─── */
-function evaluarRespuesta() {
-    var texto = document.getElementById('respuesta').value.trim();
-    var words = contarPalabras(texto);
-    var lines = contarLineas(texto);
-    var t     = texto.toLowerCase();
-
-    var puntaje  = 0;
-    var criterios = [];
-
-    var tieneQueja    = /es culpa|por su culpa|siempre me|siempre fue así|nunca cambiará|no es mi culpa|toda la vida así|no puedo evitar|genética|así somos|qué le voy a hacer|ya no hay remedio|no tengo esperanza|no voy a cambiar/i.test(texto);
-    var tienePatron   = /noto que|me doy cuenta|cuando alguien|cuando me corrigen|cuando me contradicen|me cierro|me defiendo|me pongo a la defensiva|reacciono|mi reacción|ese patrón|ese hábito|esa costumbre|lo aprendí|lo vi en|viene de|heredé|mi familia|crecí viendo|crecí en|mi historia|ese comportamiento|esa forma de|reconozco que/i.test(t);
-    var tieneEfecto   = /me afecta|afecta mis|afecta en|hoy me|me cuesta|sigue pasando|todavía|aún me|genera conflicto|aleja|cierra|dificulta|daña|limita|no escucho|me bloquea|me frena|mis relaciones|en mi trabajo|en mi casa|con las personas|me impide|provoca que|me hace que/i.test(t);
-    var tieneDecision = /voy a|quiero|decido|a partir de|desde hoy|cuando noten|si alguien|empezaré|voy a intentar|me propongo|mi decisión|haré|haré diferente|dejaré|en lugar de|tomaré|cuando me corrijan|cuando me contradigan|respiraré|pausaré|escucharé|preguntaré|no reaccionar|antes de|primero|el paso que|la acción que/i.test(t);
-    var soloQueja     = tieneQueja && !tieneDecision && !tienePatron;
-
-    if (soloQueja || (!tienePatron && !tieneEfecto && !tieneDecision)) {
-        puntaje = words < 10 ? 0 : 1;
-    } else {
-        puntaje = 1;
-        if (tienePatron)   puntaje += 1.2;
-        if (tieneEfecto)   puntaje += 1.2;
-        if (tieneDecision) puntaje += 1.6;
-        if (tieneQueja)    puntaje  = Math.max(1, puntaje - 1);
-        puntaje = Math.round(puntaje);
-        if (puntaje > 5)   puntaje  = 5;
-    }
-    if (words < 15 && puntaje > 2) puntaje = 2;
-    if (words < 8)                 puntaje  = Math.min(puntaje, 1);
-
-    if (soloQueja) {
-        criterios.push({ tipo:'alerta', titulo:'⚠️ Se detecta queja o culpa sin liderazgo',
-            cal:'Tu respuesta expresa frustración o señala a otros, pero no propone ningún cambio.',
-            rec:'Agrega una decisión concreta: "A partir de ahora, cuando me corrijan, haré…"' });
-    }
-    if (tienePatron) {
-        criterios.push({ tipo:'ok', titulo:'✅ Patrón identificado',
-            cal:'Nombraste la conducta o reacción que reconoces en ti.', rec:'' });
-    } else {
-        criterios.push({ tipo:'rec', titulo:'🔹 Falta identificar el patrón',
-            cal:'No queda claro qué conducta o reacción estás reconociendo.',
-            rec:'Empieza con: "Noto que cuando alguien me contradice, yo…"' });
-    }
-    if (tieneEfecto) {
-        criterios.push({ tipo:'ok', titulo:'✅ Efecto actual explicado',
-            cal:'Describiste cómo ese patrón te afecta hoy.', rec:'' });
-    } else {
-        criterios.push({ tipo:'rec', titulo:'🔹 Falta el efecto actual',
-            cal:'Identificaste el patrón, pero no explicaste cómo te afecta hoy.',
-            rec:'Añade: "Ese patrón me afecta hoy porque…"' });
-    }
-    if (tieneDecision) {
-        criterios.push({ tipo:'ok', titulo:'✅ Decisión concreta propuesta',
-            cal:'Propusiste qué harás diferente. Eso es liderar tu identidad.', rec:'' });
-    } else {
-        criterios.push({ tipo:'rec', titulo:'🔹 Falta la decisión concreta',
-            cal:'Nombraste el problema pero no propusiste qué harás diferente.',
-            rec:'Cierra con: "A partir de ahora haré…"' });
-    }
-    if (lines >= 4 && lines <= 6) {
-        criterios.push({ tipo:'ok', titulo:'✅ Extensión adecuada (4–6 líneas)',
-            cal:'Respondiste dentro del rango pedido.', rec:'' });
-    } else if (lines < 4) {
-        criterios.push({ tipo:'rec', titulo:'⚠️ Respuesta muy corta',
-            cal:'Tu respuesta tiene menos de 4 líneas.',
-            rec:'Desarrolla los tres elementos: patrón, efecto y decisión.' });
-    } else {
-        criterios.push({ tipo:'rec', titulo:'⚠️ Respuesta muy larga',
-            cal:'Tu respuesta supera las 6 líneas.',
-            rec:'Sé más directo/a. Quédate con lo esencial.' });
-    }
-
-    var nivel = '', nClass = '', mensaje = '';
-    if      (puntaje === 5) { nivel = '🌟 Liderazgo personal';    nClass = 'nivel-5'; mensaje = '¡Excelente! Tu respuesta muestra los tres elementos del liderazgo personal: identificas el patrón con honestidad, explicas su efecto real hoy y propones una decisión concreta.'; }
-    else if (puntaje === 4) { nivel = '👍 Muy bien logrado';       nClass = 'nivel-4'; mensaje = '¡Muy bien! Tu respuesta tiene la estructura correcta. Pequeños ajustes en la precisión del efecto o de la decisión te llevarían al nivel excelente.'; }
-    else if (puntaje === 3) { nivel = '📖 En proceso';             nClass = 'nivel-3'; mensaje = 'Buen esfuerzo. Tu intención es la correcta, pero la respuesta necesita más concreción. Intenta reescribirla usando los tres pasos de la guía.'; }
-    else if (puntaje === 2) { nivel = '⚠️ Necesita mejorar';       nClass = 'nivel-2'; mensaje = 'Tu respuesta tiene algunos elementos de conciencia, pero le falta una propuesta clara de cambio.'; }
-    else if (puntaje === 1) { nivel = '🔄 Sin liderazgo aún';      nClass = 'nivel-1'; mensaje = 'La respuesta refleja queja o culpa, pero no liderazgo. Intenta reescribir usando los tres pasos de la guía.'; }
-    else                    { nivel = '— Sin respuesta';           nClass = 'nivel-0'; mensaje = 'No se detectó una respuesta válida. Escribe tu respuesta como líder aplicando los tres pasos de la guía.'; }
-
-    /* ── RENDER PANTALLA ── */
-    document.getElementById('numeroPuntaje').innerHTML = puntaje + '<span class="de-cinco">/5</span>';
-    document.getElementById('nivelTexto').textContent  = nivel;
-    document.getElementById('nivelTexto').className    = 'nivel ' + nClass;
-
-    var criteriosHTML = '';
-    criterios.forEach(function(c) {
-        var esAlerta = c.tipo === 'alerta';
-        var recHTML  = c.rec ? '<div class="criterio-rec"><strong>💡 Sugerencia:</strong> ' + c.rec + '</div>' : '';
-        criteriosHTML += '<div class="criterio-item ' + (esAlerta ? 'criterio-alerta' : '') + '">' +
-            '<div class="criterio-titulo">' + c.titulo + '</div>' +
-            '<div class="criterio-cal">'   + c.cal    + '</div>' +
-            recHTML + '</div>';
-    });
-    document.getElementById('criteriosEvaluacion').innerHTML = criteriosHTML;
-    document.getElementById('mensajeGeneral').textContent    = mensaje;
-
-    /* ── PREPARAR CERTIFICADO ── */
-    var hoy = new Date().toLocaleDateString('es-GT', { year:'numeric', month:'long', day:'numeric' });
-    document.getElementById('certFecha').textContent   = hoy;
-    document.getElementById('certPuntaje').textContent = puntaje + '/5';
-    document.getElementById('certNivel').textContent   = nivel;
-    /* Usar div#certRespuesta — se llena al descargar con el nombre */
-    var certRespEl = document.getElementById('certRespuesta');
-    certRespEl.textContent = texto;
-
-    var certCrit = '';
-    criterios.forEach(function(c) {
-        var bColor = c.tipo === 'alerta' ? '#C0392B' : '#C9A34E';
-        var bg     = c.tipo === 'alerta' ? 'rgba(192,57,43,0.06)' : 'rgba(201,163,78,0.08)';
-        var tColor = c.tipo === 'alerta' ? '#C0392B' : '#0F2747';
-        var recPDF = c.rec ? '<div style="margin-top:6px;padding:7px 10px;background:rgba(201,163,78,0.1);border-left:3px solid #C9A34E;font-size:10px;color:#4B5563;"><strong style="color:#0F2747;">💡 Sugerencia:</strong> ' + c.rec + '</div>' : '';
-        certCrit += '<div style="margin-bottom:10px;padding:11px 14px;background:' + bg + ';border-left:4px solid ' + bColor + ';border-radius:0 6px 6px 0;">' +
-            '<div style="font-weight:700;color:' + tColor + ';margin-bottom:4px;font-size:11px;">' + c.titulo + '</div>' +
-            '<div style="font-size:10.5px;color:#4B5563;line-height:1.55;">' + c.cal + '</div>' +
-            recPDF + '</div>';
-    });
-    document.getElementById('certCriterios').innerHTML    = certCrit;
-    document.getElementById('certMensaje').textContent    = mensaje;
-
-    /* ── MOSTRAR RESULTADO ── */
-    document.getElementById('resultadoFinal').classList.add('mostrar');
-    setTimeout(function(){ document.getElementById('resultadoFinal').scrollIntoView({ behavior:'smooth' }); }, 300);
+function actualizarContador(){
+  var v=document.getElementById('respuesta').value;
+  var w=contarPalabras(v), l=contarLineas(v);
+  var eW=document.getElementById('cntWords'), eL=document.getElementById('cntLines');
+  eW.textContent=w; eL.textContent=l;
+  eW.className='contador-num'+(w>=40?' ok':w>=20?' warn':'');
+  eL.className='contador-num'+(l>=4&&l<=6?' ok':l>6?' error':l>=2?' warn':'');
+  document.getElementById('btnEvaluar').disabled=(w<10);
 }
 
-/* ─── DESCARGA ─── */
-function descargarCertificado() {
-    var nombre = prompt('Escribe tu nombre para incluirlo en el certificado:');
-    if (!nombre || nombre.trim() === '') {
-        alert('Debes ingresar tu nombre para descargar el certificado.');
-        return;
-    }
-    var nombreLimpio = nombre.trim();
-    document.getElementById('certEstudiante').textContent = nombreLimpio;
+/* =========================================================
+   EVALUACIÓN
+   ========================================================= */
+function evaluarRespuesta(){
+  var texto=document.getElementById('respuesta').value.trim();
+  var words=contarPalabras(texto), lines=contarLineas(texto), t=texto.toLowerCase();
+  var puntaje=0, criterios=[];
+  var tieneQueja    =/es culpa|por su culpa|siempre me|siempre fue así|nunca cambiará|no es mi culpa|toda la vida así|no puedo evitar|genética|así somos|ya no hay remedio|no tengo esperanza|no voy a cambiar/i.test(texto);
+  var tienePatron   =/noto que|me doy cuenta|cuando alguien|cuando me corrigen|cuando me contradicen|me cierro|me defiendo|me pongo a la defensiva|reacciono|mi reacción|ese patrón|ese hábito|lo aprendí|lo vi en|viene de|heredé|mi familia|crecí viendo|crecí en|mi historia|ese comportamiento|reconozco que/i.test(t);
+  var tieneEfecto   =/me afecta|afecta mis|hoy me|me cuesta|sigue pasando|todavía|aún me|genera conflicto|aleja|dificulta|daña|limita|no escucho|me bloquea|me frena|mis relaciones|en mi trabajo|en mi casa|me impide|provoca que/i.test(t);
+  var tieneDecision =/voy a|quiero|decido|a partir de|desde hoy|empezaré|me propongo|mi decisión|haré|dejaré|en lugar de|tomaré|cuando me corrijan|respiraré|pausaré|escucharé|preguntaré|no reaccionar|antes de/i.test(t);
+  var soloQueja=tieneQueja&&!tieneDecision&&!tienePatron;
 
-    var btn = document.getElementById('btnDescargar');
-    btn.disabled    = true;
-    btn.textContent = '⏳ Generando certificado…';
+  if(soloQueja||(!tienePatron&&!tieneEfecto&&!tieneDecision)){
+    puntaje=words<10?0:1;
+  } else {
+    puntaje=1;
+    if(tienePatron)   puntaje+=1.2;
+    if(tieneEfecto)   puntaje+=1.2;
+    if(tieneDecision) puntaje+=1.6;
+    if(tieneQueja)    puntaje=Math.max(1,puntaje-1);
+    puntaje=Math.round(puntaje); if(puntaje>5) puntaje=5;
+  }
+  if(words<15&&puntaje>2) puntaje=2;
+  if(words<8) puntaje=Math.min(puntaje,1);
 
-    /* Mover el certificado a posición visible para que html2canvas lo capture */
-    var cert = document.getElementById('certificado');
-    cert.style.position = 'fixed';
-    cert.style.left     = '0px';
-    cert.style.top      = '0px';
-    cert.style.zIndex   = '9999';
-    cert.style.width    = '860px';
+  if(soloQueja) criterios.push({tipo:'alerta',titulo:'⚠ Se detecta queja o culpa sin liderazgo',cal:'Tu respuesta expresa frustración pero no propone ningún cambio.',rec:'Agrega: "A partir de ahora, cuando me corrijan, haré…"'});
+  criterios.push(tienePatron
+    ?{tipo:'ok',titulo:'✓ Patrón identificado',cal:'Nombraste la conducta o reacción que reconoces en ti.',rec:''}
+    :{tipo:'rec',titulo:'· Falta identificar el patrón',cal:'No queda claro qué conducta estás reconociendo.',rec:'Empieza con: "Noto que cuando alguien me contradice, yo…"'});
+  criterios.push(tieneEfecto
+    ?{tipo:'ok',titulo:'✓ Efecto actual explicado',cal:'Describiste cómo ese patrón te afecta hoy.',rec:''}
+    :{tipo:'rec',titulo:'· Falta el efecto actual',cal:'Identificaste el patrón, pero no explicaste cómo te afecta hoy.',rec:'Añade: "Ese patrón me afecta hoy porque…"'});
+  criterios.push(tieneDecision
+    ?{tipo:'ok',titulo:'✓ Decisión concreta propuesta',cal:'Propusiste qué harás diferente.',rec:''}
+    :{tipo:'rec',titulo:'· Falta la decisión concreta',cal:'Nombraste el problema pero no propusiste qué harás diferente.',rec:'Cierra con: "A partir de ahora haré…"'});
+  if(lines>=4&&lines<=6) criterios.push({tipo:'ok',titulo:'✓ Extensión adecuada (4–6 líneas)',cal:'Respondiste dentro del rango pedido.',rec:''});
+  else if(lines<4) criterios.push({tipo:'rec',titulo:'⚠ Respuesta muy corta',cal:'Menos de 4 líneas.',rec:'Desarrolla los tres elementos: patrón, efecto y decisión.'});
+  else criterios.push({tipo:'rec',titulo:'⚠ Respuesta muy larga',cal:'Supera las 6 líneas.',rec:'Sé más directo/a.'});
 
-    setTimeout(function() {
-        html2canvas(cert, {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: '#F7F2E8',
-            logging: false,
-            width: 860,
-            windowWidth: 900
-        }).then(function(canvas) {
-            /* Restaurar posición oculta */
-            cert.style.position = 'fixed';
-            cert.style.left     = '-9999px';
-            cert.style.top      = '0px';
-            cert.style.zIndex   = '-1';
+  var nivel='',nClass='',mensaje='';
+  if(puntaje===5){nivel='Liderazgo personal';nClass='nivel-5';mensaje='¡Excelente! Tu respuesta muestra los tres elementos del liderazgo personal: identificas el patrón con honestidad, explicas su efecto real hoy y propones una decisión concreta.';}
+  else if(puntaje===4){nivel='Muy bien logrado';nClass='nivel-4';mensaje='¡Muy bien! Tu respuesta tiene la estructura correcta. Pequeños ajustes en la precisión del efecto o de la decisión te llevarían al nivel excelente.';}
+  else if(puntaje===3){nivel='En proceso';nClass='nivel-3';mensaje='Buen esfuerzo. Tu intención es la correcta, pero la respuesta necesita más concreción. Intenta reescribirla usando los tres pasos de la guía.';}
+  else if(puntaje===2){nivel='Necesita mejorar';nClass='nivel-2';mensaje='Tu respuesta tiene algunos elementos de conciencia, pero le falta una propuesta clara de cambio.';}
+  else if(puntaje===1){nivel='Sin liderazgo aún';nClass='nivel-1';mensaje='La respuesta refleja queja o culpa, pero no liderazgo. Intenta reescribir usando los tres pasos de la guía.';}
+  else{nivel='Sin respuesta';nClass='nivel-0';mensaje='No se detectó una respuesta válida.';}
 
-            var link      = document.createElement('a');
-            link.href     = canvas.toDataURL('image/png', 0.95);
-            link.download = 'Liderazgo_Clase2_' + nombreLimpio.replace(/\s+/g, '_') + '.png';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+  document.getElementById('numeroPuntaje').innerHTML=puntaje+'<span class="de-cinco">/5</span>';
+  document.getElementById('nivelTexto').textContent=nivel;
+  document.getElementById('nivelTexto').className='nivel '+nClass;
 
-            btn.disabled  = false;
-            btn.innerHTML = '🎓 Descargar mi certificado';
-            alert('✅ Certificado descargado como imagen PNG.\n\nCompártelo con tu tutor en la plataforma del curso.');
-        }).catch(function(err) {
-            cert.style.position = 'fixed';
-            cert.style.left     = '-9999px';
-            cert.style.top      = '0px';
-            cert.style.zIndex   = '-1';
-            btn.disabled  = false;
-            btn.innerHTML = '🎓 Descargar mi certificado';
-            alert('❌ Error al generar el certificado. Intenta nuevamente.\n\n' + err.message);
-        });
-    }, 400);
+  var cHTML='';
+  criterios.forEach(function(c){
+    var ea=c.tipo==='alerta';
+    var r=c.rec?'<div class="criterio-rec"><strong>Sugerencia:</strong> '+c.rec+'</div>':'';
+    cHTML+='<div class="criterio-item '+(ea?'criterio-alerta':'')+'"><div class="criterio-titulo">'+c.titulo+'</div><div class="criterio-cal">'+c.cal+'</div>'+r+'</div>';
+  });
+  document.getElementById('criteriosEvaluacion').innerHTML=cHTML;
+  document.getElementById('mensajeGeneral').textContent=mensaje;
+
+  var hoy=new Date().toLocaleDateString('es-GT',{year:'numeric',month:'long',day:'numeric'});
+  G.fecha=hoy; G.puntaje=puntaje+'/5'; G.nivel=nivel;
+  G.respuesta=texto; G.mensaje=mensaje; G.criterios=criterios;
+
+  document.getElementById('resultadoFinal').classList.add('mostrar');
+  setTimeout(function(){document.getElementById('resultadoFinal').scrollIntoView({behavior:'smooth'});},300);
 }
 
-/* ─── REINICIAR ─── */
-function reiniciar() {
-    if (!confirm('¿Deseas limpiar la respuesta y el resultado?')) return;
-    document.getElementById('respuesta').value        = '';
-    document.getElementById('cntWords').textContent   = '0';
-    document.getElementById('cntWords').className     = 'contador-num';
-    document.getElementById('cntLines').textContent   = '0';
-    document.getElementById('cntLines').className     = 'contador-num';
-    document.getElementById('resultadoFinal').classList.remove('mostrar');
-    document.getElementById('btnEvaluar').disabled    = true;
-    window.scrollTo({ top:0, behavior:'smooth' });
+/* =========================================================
+   DIBUJAR CERTIFICADO EN CANVAS — sin librerías externas
+   ========================================================= */
+function wrapText(ctx, text, x, y, maxW, lineH){
+  var words=text.split(' '), line='', lines=[];
+  for(var i=0;i<words.length;i++){
+    var test=line+(line?' ':'')+words[i];
+    if(ctx.measureText(test).width>maxW&&line){lines.push(line);line=words[i];}
+    else line=test;
+  }
+  lines.push(line);
+  lines.forEach(function(l,idx){ctx.fillText(l,x,y+idx*lineH);});
+  return lines.length;
+}
+
+function dibujarCertificado(nombre){
+  var W=860, pad=40;
+  /* Calcular altura dinámica según contenido */
+  var estimH = 920 + G.criterios.length*70 + Math.ceil(G.respuesta.length/90)*18 + Math.ceil(G.mensaje.length/80)*18;
+  var H = Math.max(1100, estimH);
+
+  var cv=document.getElementById('certCanvas');
+  cv.width=W*2; cv.height=H*2;
+  cv.style.width=W+'px'; cv.style.height=H+'px';
+  var ctx=cv.getContext('2d');
+  ctx.scale(2,2);
+
+  /* ── Fondo general ── */
+  ctx.fillStyle='#F7F2E8'; ctx.fillRect(0,0,W,H);
+
+  /* ── Cabecera azul marino ── */
+  ctx.fillStyle='#0F2747'; ctx.fillRect(0,0,W,180);
+
+  /* Franja dorada superior */
+  var gTop=ctx.createLinearGradient(0,0,W,0);
+  gTop.addColorStop(0,'#C9A34E'); gTop.addColorStop(0.5,'#E8C97A'); gTop.addColorStop(1,'#C9A34E');
+  ctx.fillStyle=gTop; ctx.fillRect(0,0,W,6);
+
+  /* Título en cabecera */
+  ctx.fillStyle='rgba(201,163,78,0.2)';
+  ctx.font='bold 9px Montserrat,Arial'; ctx.textAlign='center';
+  ctx.fillStyle='#C9A34E';
+  ctx.fillText('LIDERAZGO · CASO PRÁCTICO', W/2, 35);
+
+  ctx.fillStyle='#F7F2E8';
+  ctx.font='bold 22px Montserrat,Arial';
+  ctx.fillText('Mi historia familiar y mi identidad', W/2, 70);
+
+  ctx.fillStyle='rgba(247,242,232,0.55)';
+  ctx.font='300 11px Montserrat,Arial';
+  ctx.fillText('Clase 2 · Nivel 1 · Curso de Liderazgo Extraordinarios', W/2, 92);
+
+  /* Franja decorativa inferior cabecera */
+  var gMid=ctx.createLinearGradient(0,0,W,0);
+  gMid.addColorStop(0,'transparent'); gMid.addColorStop(0.5,'rgba(201,163,78,0.3)'); gMid.addColorStop(1,'transparent');
+  ctx.fillStyle=gMid; ctx.fillRect(0,175,W,4);
+
+  /* ── Tarjeta de datos del estudiante ── */
+  var cardY=196, cardH=64;
+  ctx.fillStyle='#FFFFFF';
+  roundRect(ctx,pad,cardY,W-pad*2,cardH,8); ctx.fill();
+  ctx.strokeStyle='rgba(15,39,71,0.1)'; ctx.lineWidth=1; ctx.stroke();
+
+  var cols=[
+    {label:'ESTUDIANTE', value:nombre, x:pad+14},
+    {label:'FECHA',      value:G.fecha, x:pad+14+(W-pad*2)*0.38},
+    {label:'PUNTAJE',    value:G.puntaje, x:pad+14+(W-pad*2)*0.65},
+    {label:'NIVEL',      value:G.nivel, x:pad+14+(W-pad*2)*0.80}
+  ];
+  cols.forEach(function(c,i){
+    /* línea divisoria */
+    if(i>0){ ctx.strokeStyle='rgba(15,39,71,0.08)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(c.x-10,cardY+8); ctx.lineTo(c.x-10,cardY+cardH-8); ctx.stroke(); }
+    ctx.fillStyle='#C9A34E'; ctx.font='bold 8px Montserrat,Arial'; ctx.textAlign='left';
+    ctx.fillText(c.label, c.x, cardY+18);
+    ctx.fillStyle='#0F2747'; ctx.font='bold '+(i===0?'14':'12')+'px Montserrat,Arial';
+    ctx.fillText(c.value.length>22?c.value.substring(0,22)+'…':c.value, c.x, cardY+42);
+  });
+
+  var cy=cardY+cardH+22;
+
+  /* ── Respuesta del estudiante ── */
+  ctx.fillStyle='#C9A34E'; ctx.font='bold 9px Montserrat,Arial'; ctx.textAlign='left';
+  ctx.fillText('RESPUESTA DEL ESTUDIANTE', pad, cy);
+  cy+=4;
+  ctx.fillStyle='rgba(15,39,71,0.6)'; ctx.fillRect(pad,cy,W-pad*2,2); cy+=10;
+
+  /* Caja blanca con borde izquierdo dorado */
+  ctx.fillStyle='#C9A34E'; ctx.fillRect(pad,cy,4,200);
+  ctx.fillStyle='#FFFFFF'; ctx.fillRect(pad+4,cy,W-pad*2-4,200);
+  ctx.font='12px Montserrat,Arial'; ctx.fillStyle='#0F2747'; ctx.textAlign='left';
+  var respLines=G.respuesta.split('\n');
+  var ry=cy+16, maxRespW=W-pad*2-28;
+  respLines.forEach(function(rl){
+    if(rl.trim()===''){ry+=14;return;}
+    var n=wrapText(ctx,rl,pad+18,ry,maxRespW,16);
+    ry+=n*16+2;
+  });
+  cy+=210;
+
+  /* ── Retroalimentación ── */
+  cy+=10;
+  ctx.fillStyle='#2D6A4F'; ctx.font='bold 9px Montserrat,Arial'; ctx.textAlign='left';
+  ctx.fillText('RETROALIMENTACIÓN', pad, cy);
+  cy+=4; ctx.fillStyle='rgba(45,106,79,0.5)'; ctx.fillRect(pad,cy,W-pad*2,2); cy+=12;
+
+  G.criterios.forEach(function(c){
+    var isAlerta=c.tipo==='alerta';
+    var bColor=isAlerta?'#C0392B':'#C9A34E';
+    var bgColor=isAlerta?'rgba(192,57,43,0.06)':'rgba(201,163,78,0.08)';
+    var tColor=isAlerta?'#C0392B':'#0F2747';
+    var textTotal=c.titulo+' — '+c.cal+(c.rec?' Sugerencia: '+c.rec:'');
+    var lineCount=Math.ceil(textTotal.length/85)+1;
+    var boxH=Math.max(44, lineCount*15+18);
+
+    ctx.fillStyle=bgColor; roundRect(ctx,pad,cy,W-pad*2,boxH,6); ctx.fill();
+    ctx.fillStyle=bColor; ctx.fillRect(pad,cy,4,boxH);
+    ctx.fillStyle=tColor; ctx.font='bold 10px Montserrat,Arial';
+    ctx.fillText(c.titulo, pad+14, cy+14);
+    ctx.fillStyle='#4B5563'; ctx.font='10px Montserrat,Arial';
+    var calN=wrapText(ctx,c.cal,pad+14,cy+28,W-pad*2-24,14);
+    var innerY=cy+28+calN*14;
+    if(c.rec){
+      ctx.fillStyle='#0F2747'; ctx.font='bold 9px Montserrat,Arial';
+      ctx.fillText('Sugerencia: ', pad+14, innerY+4);
+      ctx.fillStyle='#4B5563'; ctx.font='9px Montserrat,Arial';
+      wrapText(ctx,c.rec, pad+14+ctx.measureText('Sugerencia: ').width, innerY+4, W-pad*2-24, 13);
+    }
+    cy+=boxH+8;
+  });
+
+  /* Mensaje general */
+  ctx.fillStyle='#0F2747'; roundRect(ctx,pad,cy,W-pad*2,70,8); ctx.fill();
+  ctx.fillStyle='#F7F2E8'; ctx.font='11px Montserrat,Arial';
+  wrapText(ctx,G.mensaje, pad+16, cy+20, W-pad*2-32, 16);
+  cy+=80;
+
+  /* ── Rúbrica compacta ── */
+  cy+=8;
+  ctx.fillStyle='#C9A34E'; ctx.font='bold 9px Montserrat,Arial'; ctx.textAlign='left';
+  ctx.fillText('RÚBRICA DE REFERENCIA', pad, cy);
+  cy+=4; ctx.fillStyle='rgba(201,163,78,0.6)'; ctx.fillRect(pad,cy,W-pad*2,2); cy+=10;
+
+  var rubrica=[
+    {p:'5',bg:'#0F2747',tc:'#C9A34E',desc:'Identifica claramente el patrón, explica su efecto actual y propone una decisión concreta.'},
+    {p:'4',bg:'#2D6A4F',tc:'#fff',  desc:'Bien logrado; falta precisión en el efecto o en la decisión concreta.'},
+    {p:'3',bg:'#C9A34E',tc:'#fff',  desc:'Intención correcta pero respuesta general. Decisión vaga.'},
+    {p:'2',bg:'#C97D2E',tc:'#fff',  desc:'Reconoce el patrón pero no propone un cambio claro.'},
+    {p:'1',bg:'#C0392B',tc:'#fff',  desc:'La respuesta se queda en queja sin proponer nada.'},
+    {p:'0',bg:'#4B5563',tc:'#fff',  desc:'Sin respuesta.'}
+  ];
+  rubrica.forEach(function(r,i){
+    var rBg=i%2===0?'#FFFFFF':'rgba(247,242,232,0.6)';
+    ctx.fillStyle=rBg; ctx.fillRect(pad,cy,W-pad*2,28);
+    /* círculo puntaje */
+    ctx.fillStyle=r.bg; ctx.beginPath(); ctx.arc(pad+22,cy+14,13,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle=r.tc; ctx.font='bold 12px Montserrat,Arial'; ctx.textAlign='center';
+    ctx.fillText(r.p, pad+22, cy+19);
+    ctx.fillStyle='#0F2747'; ctx.font='10px Montserrat,Arial'; ctx.textAlign='left';
+    ctx.fillText(r.desc, pad+44, cy+18);
+    cy+=28;
+  });
+  cy+=14;
+
+  /* ── Frase de cierre ── */
+  ctx.fillStyle='#0F2747'; roundRect(ctx,pad,cy,W-pad*2,80,10); ctx.fill();
+  ctx.fillStyle='#C9A34E'; ctx.font='bold 8px Montserrat,Arial'; ctx.textAlign='center';
+  ctx.fillText('RECOMENDACIÓN FINAL', W/2, cy+16);
+  ctx.fillStyle='#F7F2E8'; ctx.font='bold 14px Montserrat,Arial';
+  ctx.fillText('"La identidad no se demuestra contando tu historia,', W/2, cy+36);
+  ctx.fillText('sino en lo que decides hacer con ella."', W/2, cy+54);
+  ctx.fillStyle='rgba(247,242,232,0.6)'; ctx.font='10px Montserrat,Arial';
+  ctx.fillText('El liderazgo empieza cuando tú eliges, no cuando tu historia manda.', W/2, cy+70);
+  cy+=90;
+
+  /* ── Franja dorada final ── */
+  ctx.fillStyle=gTop; ctx.fillRect(0,H-5,W,5);
+
+  /* ── Pie ── */
+  ctx.fillStyle='rgba(15,39,71,0.35)'; ctx.font='8px Montserrat,Arial'; ctx.textAlign='center';
+  ctx.fillText('LIDERAZGO · CLASE 2 · EXTRAORDINARIOS · MATERIAL EDUCATIVO INTERACTIVO', W/2, H-14);
+
+  return cv;
+}
+
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.lineTo(x+w-r,y); ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
+  ctx.closePath();
+}
+
+/* =========================================================
+   DESCARGA
+   ========================================================= */
+function descargarCertificado(){
+  var nombre=prompt('Escribe tu nombre completo para el certificado:');
+  if(!nombre||nombre.trim()===''){alert('Debes ingresar tu nombre.');return;}
+  G.nombre=nombre.trim();
+
+  var btn=document.getElementById('btnDescargar');
+  btn.disabled=true; btn.textContent='⏳ Generando certificado…';
+
+  try {
+    var cv=dibujarCertificado(G.nombre);
+    var dataURL=cv.toDataURL('image/png',1.0);
+
+    /* Intentar descarga directa */
+    var link=document.createElement('a');
+    link.href=dataURL;
+    link.download='Liderazgo_Clase2_'+G.nombre.replace(/\s+/g,'_')+'.png';
+    link.style.display='none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    btn.disabled=false;
+    btn.innerHTML='🎓 Descargar mi certificado PNG';
+    setTimeout(function(){
+      alert('✅ Certificado generado.\n\nSi no se descargó automáticamente, se abrirá en una nueva pestaña — guárdalo con clic derecho → "Guardar imagen".');
+    },200);
+  } catch(e){
+    /* Fallback: abrir en nueva pestaña */
+    try {
+      var cv2=dibujarCertificado(G.nombre);
+      var w=window.open('','_blank');
+      if(w){
+        w.document.write('<html><body style="margin:0;background:#111;"><img src="'+cv2.toDataURL('image/png',1.0)+'" style="max-width:100%;display:block;margin:auto;"><p style="color:#fff;text-align:center;font-family:sans-serif;padding:10px;">Clic derecho → Guardar imagen como...</p></body></html>');
+        w.document.close();
+      }
+    } catch(e2){ alert('Error al generar el certificado: '+e2.message); }
+    btn.disabled=false;
+    btn.innerHTML='🎓 Descargar mi certificado PNG';
+  }
+}
+
+/* =========================================================
+   REINICIAR
+   ========================================================= */
+function reiniciar(){
+  if(!confirm('¿Deseas limpiar la respuesta y el resultado?')) return;
+  document.getElementById('respuesta').value='';
+  document.getElementById('cntWords').textContent='0'; document.getElementById('cntWords').className='contador-num';
+  document.getElementById('cntLines').textContent='0'; document.getElementById('cntLines').className='contador-num';
+  document.getElementById('resultadoFinal').classList.remove('mostrar');
+  document.getElementById('btnEvaluar').disabled=true;
+  G={nombre:'',fecha:'',puntaje:'',nivel:'',respuesta:'',mensaje:'',criterios:[]};
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
