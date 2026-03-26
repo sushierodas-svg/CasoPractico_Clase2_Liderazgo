@@ -210,9 +210,9 @@ body {
     background: #0F2747; color: #C9A34E;
     padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;
 }
-.contador-num.ok  { background: #2D6A4F; color: #fff; }
+.contador-num.ok   { background: #2D6A4F; color: #fff; }
 .contador-num.warn { background: #C97D2E; color: #fff; }
-.contador-num.error { background: #C0392B; color: #fff; }
+.contador-num.error{ background: #C0392B; color: #fff; }
 .lineas-info { font-size: 11px; color: #aaa; font-style: italic; }
 
 /* ── RÚBRICA ── */
@@ -303,20 +303,18 @@ body {
     font-size: 72px; font-weight: 700; line-height: 1;
     color: #F7F2E8;
 }
-.puntaje-grande .de-cinco {
-    font-size: 28px; color: rgba(247,242,232,0.4);
-}
+.puntaje-grande .de-cinco { font-size: 28px; color: rgba(247,242,232,0.4); }
 .puntaje-grande .nivel {
     display: inline-block; margin-top: 14px;
     padding: 5px 20px; border-radius: 20px;
     font-size: 13px; font-weight: 600;
 }
-.nivel-5 { background: rgba(15,39,71,0.5); color: #C9A34E; border: 1.5px solid rgba(201,163,78,0.4); }
-.nivel-4 { background: rgba(45,106,79,0.4); color: #7dffc2; border: 1.5px solid rgba(45,106,79,0.5); }
+.nivel-5 { background: rgba(15,39,71,0.5);   color: #C9A34E; border: 1.5px solid rgba(201,163,78,0.4); }
+.nivel-4 { background: rgba(45,106,79,0.4);  color: #7dffc2; border: 1.5px solid rgba(45,106,79,0.5); }
 .nivel-3 { background: rgba(201,163,78,0.3); color: #ffe08a; border: 1.5px solid rgba(201,163,78,0.5); }
 .nivel-2 { background: rgba(201,125,46,0.3); color: #ffc08a; border: 1.5px solid rgba(201,125,46,0.5); }
-.nivel-1 { background: rgba(192,57,43,0.3); color: #ffaaaa; border: 1.5px solid rgba(192,57,43,0.5); }
-.nivel-0 { background: rgba(75,85,99,0.3); color: #ccc; border: 1.5px solid rgba(75,85,99,0.4); }
+.nivel-1 { background: rgba(192,57,43,0.3);  color: #ffaaaa; border: 1.5px solid rgba(192,57,43,0.5); }
+.nivel-0 { background: rgba(75,85,99,0.3);   color: #ccc;    border: 1.5px solid rgba(75,85,99,0.4); }
 
 /* ── DETALLE ── */
 .resultado-detalle {
@@ -330,7 +328,7 @@ body {
 }
 .detalle-header .icon { font-size: 24px; }
 .detalle-header h3 { color: #F7F2E8; font-size: 15px; }
-.detalle-header p { color: rgba(247,242,232,0.6); font-size: 12px; margin-top: 2px; }
+.detalle-header p  { color: rgba(247,242,232,0.6); font-size: 12px; margin-top: 2px; }
 .detalle-cuerpo { padding: 22px; background: #fff; }
 
 .criterio-item {
@@ -340,7 +338,7 @@ body {
     padding: 13px 16px; margin-bottom: 12px;
 }
 .criterio-titulo { font-weight: 700; color: #0F2747; margin-bottom: 5px; font-size: 13px; }
-.criterio-cal { color: #4B5563; font-size: 12.5px; line-height: 1.6; }
+.criterio-cal    { color: #4B5563; font-size: 12.5px; line-height: 1.6; }
 .criterio-rec {
     margin-top: 10px; padding: 9px 12px;
     background: rgba(201,163,78,0.1);
@@ -348,10 +346,7 @@ body {
     border-radius: 4px; font-size: 12px; color: #4B5563;
 }
 .criterio-rec strong { color: #0F2747; }
-.criterio-alerta {
-    background: rgba(192,57,43,0.06);
-    border-left: 4px solid #C0392B;
-}
+.criterio-alerta { background: rgba(192,57,43,0.06); border-left: 4px solid #C0392B; }
 .criterio-alerta .criterio-titulo { color: #C0392B; }
 
 .mensaje-general {
@@ -361,7 +356,6 @@ body {
     font-size: 13px; color: #F7F2E8;
     font-weight: 500; line-height: 1.65;
 }
-.mensaje-general .oro { color: #C9A34E; }
 
 /* ── DESCARGA ── */
 .descarga-zona {
@@ -384,11 +378,15 @@ body {
 .btn-descargar:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,163,78,0.45); }
 .btn-descargar:disabled { background: #ccc; color: #999; box-shadow: none; cursor: not-allowed; }
 
-/* ── CERTIFICADO (fuera de pantalla) ── */
+/* ── CERTIFICADO — se mueve via JS durante la captura ── */
 #certificado {
-    position: absolute; left: -9999px; top: 0;
-    width: 860px; background: #F7F2E8;
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    width: 860px;
+    background: #F7F2E8;
     font-family: 'Montserrat', sans-serif;
+    z-index: -1;
 }
 
 /* ── PIE ── */
@@ -449,7 +447,6 @@ body {
                 </div>
             </div>
 
-            <!-- 3 PASOS GUÍA -->
             <div class="guia-pasos">
                 <div class="paso">
                     <div class="paso-num">1</div>
@@ -566,12 +563,14 @@ body {
 
 <!-- ══════════════════════════════════
      CERTIFICADO DESCARGABLE
+     Oculto fuera de pantalla; se mueve
+     a posición visible solo durante
+     la captura de html2canvas.
 ══════════════════════════════════ -->
 <div id="certificado">
 
     <!-- Cabecera dorada -->
     <div style="background:#0F2747; padding:0; position:relative; overflow:hidden;">
-        <!-- Franja decorativa dorada arriba -->
         <div style="height:6px; background:linear-gradient(90deg,#C9A34E,#E8C97A,#C9A34E);"></div>
         <div style="padding:36px 40px 30px; text-align:center; position:relative;">
             <div style="display:inline-block; background:rgba(201,163,78,0.15); border:1px solid rgba(201,163,78,0.35); color:#C9A34E; font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:4px 16px; border-radius:20px; margin-bottom:14px;">Liderazgo · Caso Práctico</div>
@@ -604,11 +603,11 @@ body {
             </div>
         </div>
 
-        <!-- Respuesta -->
+        <!-- Respuesta — usa div en lugar de p para evitar corte de html2canvas -->
         <div style="margin-bottom:20px;">
             <div style="font-size:9px; font-weight:700; color:#0F2747; letter-spacing:2px; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid #C9A34E; margin-bottom:12px;">✍️ Respuesta del estudiante</div>
             <div style="background:#fff; border-left:4px solid #C9A34E; border-radius:0 8px 8px 0; padding:14px 18px;">
-                <p id="certRespuesta" style="font-size:12px; color:#0F2747; line-height:1.75; white-space:pre-wrap;"></p>
+                <div id="certRespuesta" style="font-size:12px; color:#0F2747; line-height:1.75; white-space:pre-wrap; font-family:'Montserrat',sans-serif;"></div>
             </div>
         </div>
 
@@ -616,7 +615,7 @@ body {
         <div style="margin-bottom:20px;">
             <div style="font-size:9px; font-weight:700; color:#0F2747; letter-spacing:2px; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid #2D6A4F; margin-bottom:12px;">📋 Retroalimentación</div>
             <div id="certCriterios"></div>
-            <div id="certMensaje" style="background:#0F2747; border-radius:8px; padding:14px 18px; margin-top:10px; font-size:11.5px; color:#F7F2E8; font-weight:500; line-height:1.65;"></div>
+            <div id="certMensaje" style="background:#0F2747; border-radius:8px; padding:14px 18px; margin-top:10px; font-size:11.5px; color:#F7F2E8; font-weight:500; line-height:1.65; font-family:'Montserrat',sans-serif;"></div>
         </div>
 
         <!-- Rúbrica compacta -->
@@ -624,46 +623,34 @@ body {
             <div style="font-size:9px; font-weight:700; color:#0F2747; letter-spacing:2px; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid #C9A34E; margin-bottom:12px;">🏅 Rúbrica de referencia</div>
             <table style="width:100%; border-collapse:collapse; font-size:11px;">
                 <tr style="background:#fff;">
-                    <td style="padding:8px 12px; width:44px;">
-                        <div style="width:30px;height:30px;border-radius:50%;background:#0F2747;color:#C9A34E;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">5</div>
-                    </td>
+                    <td style="padding:8px 12px; width:44px;"><div style="width:30px;height:30px;border-radius:50%;background:#0F2747;color:#C9A34E;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">5</div></td>
                     <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Identifica claramente el patrón, explica su efecto actual y propone una decisión concreta y realista.</td>
                 </tr>
                 <tr style="background:rgba(247,242,232,0.6);">
-                    <td style="padding:8px 12px;">
-                        <div style="width:30px;height:30px;border-radius:50%;background:#2D6A4F;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">4</div>
-                    </td>
+                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#2D6A4F;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">4</div></td>
                     <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Bien logrado; falta precisión en el efecto o en la decisión concreta.</td>
                 </tr>
                 <tr style="background:#fff;">
-                    <td style="padding:8px 12px;">
-                        <div style="width:30px;height:30px;border-radius:50%;background:#C9A34E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">3</div>
-                    </td>
+                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#C9A34E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">3</div></td>
                     <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Intención correcta pero respuesta general. El patrón se nombra, pero la decisión es vaga.</td>
                 </tr>
                 <tr style="background:rgba(247,242,232,0.6);">
-                    <td style="padding:8px 12px;">
-                        <div style="width:30px;height:30px;border-radius:50%;background:#C97D2E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">2</div>
-                    </td>
+                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#C97D2E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">2</div></td>
                     <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Reconoce el patrón pero no propone un cambio claro, o la respuesta culpa y no lidera.</td>
                 </tr>
                 <tr style="background:#fff;">
-                    <td style="padding:8px 12px;">
-                        <div style="width:30px;height:30px;border-radius:50%;background:#C0392B;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">1</div>
-                    </td>
+                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#C0392B;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">1</div></td>
                     <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">La respuesta se queda en queja, culpa o victimismo sin proponer nada.</td>
                 </tr>
                 <tr style="background:rgba(247,242,232,0.6);">
-                    <td style="padding:8px 12px;">
-                        <div style="width:30px;height:30px;border-radius:50%;background:#4B5563;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">0</div>
-                    </td>
+                    <td style="padding:8px 12px;"><div style="width:30px;height:30px;border-radius:50%;background:#4B5563;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">0</div></td>
                     <td style="padding:8px 10px; color:#0F2747; line-height:1.5;">Sin respuesta.</td>
                 </tr>
             </table>
         </div>
 
-        <!-- Frase de cierre + sello -->
-        <div style="background:#0F2747; border-radius:10px; padding:22px 28px; text-align:center; position:relative; overflow:hidden; margin-bottom:4px;">
+        <!-- Frase de cierre -->
+        <div style="background:#0F2747; border-radius:10px; padding:22px 28px; text-align:center; margin-bottom:4px;">
             <div style="font-size:9px; color:#C9A34E; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:10px;">Recomendación final</div>
             <div style="font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:#F7F2E8; line-height:1.4; margin-bottom:8px;">"La identidad no se demuestra contando tu historia,<br>sino en lo que decides hacer con ella."</div>
             <div style="font-size:11px; color:rgba(247,242,232,0.6);">El liderazgo empieza cuando tú eliges, no cuando tu historia manda.</div>
@@ -681,22 +668,23 @@ body {
 
 
 <script>
+/* ─── CONTADORES ─── */
 function contarPalabras(t) {
     return t.trim() === '' ? 0 : t.trim().split(/\s+/).length;
 }
 function contarLineas(t) {
     if (t.trim() === '') return 0;
-    const porSaltos = t.split(/\n/).filter(l => l.trim().length > 0).length;
+    const porSaltos  = t.split(/\n/).filter(function(l){ return l.trim().length > 0; }).length;
     const porPalabras = Math.ceil(contarPalabras(t) / 11);
     return Math.max(porSaltos, porPalabras);
 }
 
 function actualizarContador() {
-    const val = document.getElementById('respuesta').value;
-    const words = contarPalabras(val);
-    const lines = contarLineas(val);
-    const elW = document.getElementById('cntWords');
-    const elL = document.getElementById('cntLines');
+    var val   = document.getElementById('respuesta').value;
+    var words = contarPalabras(val);
+    var lines = contarLineas(val);
+    var elW   = document.getElementById('cntWords');
+    var elL   = document.getElementById('cntLines');
 
     elW.textContent = words;
     elL.textContent = lines;
@@ -707,33 +695,22 @@ function actualizarContador() {
     document.getElementById('btnEvaluar').disabled = words < 10;
 }
 
+/* ─── EVALUACIÓN ─── */
 function evaluarRespuesta() {
-    const texto = document.getElementById('respuesta').value.trim();
-    const words = contarPalabras(texto);
-    const lines = contarLineas(texto);
-    const t = texto.toLowerCase();
+    var texto = document.getElementById('respuesta').value.trim();
+    var words = contarPalabras(texto);
+    var lines = contarLineas(texto);
+    var t     = texto.toLowerCase();
 
-    let puntaje = 0;
-    const criterios = [];
+    var puntaje  = 0;
+    var criterios = [];
 
-    // ── DETECCIÓN ──
+    var tieneQueja    = /es culpa|por su culpa|siempre me|siempre fue así|nunca cambiará|no es mi culpa|toda la vida así|no puedo evitar|genética|así somos|qué le voy a hacer|ya no hay remedio|no tengo esperanza|no voy a cambiar/i.test(texto);
+    var tienePatron   = /noto que|me doy cuenta|cuando alguien|cuando me corrigen|cuando me contradicen|me cierro|me defiendo|me pongo a la defensiva|reacciono|mi reacción|ese patrón|ese hábito|esa costumbre|lo aprendí|lo vi en|viene de|heredé|mi familia|crecí viendo|crecí en|mi historia|ese comportamiento|esa forma de|reconozco que/i.test(t);
+    var tieneEfecto   = /me afecta|afecta mis|afecta en|hoy me|me cuesta|sigue pasando|todavía|aún me|genera conflicto|aleja|cierra|dificulta|daña|limita|no escucho|me bloquea|me frena|mis relaciones|en mi trabajo|en mi casa|con las personas|me impide|provoca que|me hace que/i.test(t);
+    var tieneDecision = /voy a|quiero|decido|a partir de|desde hoy|cuando noten|si alguien|empezaré|voy a intentar|me propongo|mi decisión|haré|haré diferente|dejaré|en lugar de|tomaré|cuando me corrijan|cuando me contradigan|respiraré|pausaré|escucharé|preguntaré|no reaccionar|antes de|primero|el paso que|la acción que/i.test(t);
+    var soloQueja     = tieneQueja && !tieneDecision && !tienePatron;
 
-    // 1. Queja o culpa (sin liderazgo)
-    const tieneQueja = /es culpa|por su culpa|siempre me|siempre fue así|nunca cambiará|no es mi culpa|toda la vida así|no puedo evitar|genética|así somos|qué le voy a hacer|ya no hay remedio|no tengo esperanza|no voy a cambiar/i.test(texto);
-
-    // 2. Identifica el patrón claramente
-    const tienePatron = /noto que|me doy cuenta|cuando alguien|cuando me corrigen|cuando me contradicen|me cierro|me defiendo|me pongo a la defensiva|reacciono|mi reacción|ese patrón|ese hábito|esa costumbre|lo aprendí|lo vi en|viene de|heredé|mi familia|crecí viendo|crecí en|mi historia|ese comportamiento|esa forma de|reconozco que/i.test(t);
-
-    // 3. Efecto hoy / impacto actual
-    const tieneEfecto = /me afecta|afecta mis|afecta en|hoy me|me cuesta|sigue pasando|todavía|aún me|genera conflicto|aleja|cierra|dificulta|daña|limita|no escucho|me bloquea|me frena|mis relaciones|en mi trabajo|en mi casa|con las personas|me impide|provoca que|me hace que/i.test(t);
-
-    // 4. Decisión concreta
-    const tieneDecision = /voy a|quiero|decido|a partir de|desde hoy|cuando noten|si alguien|empezaré|voy a intentar|me propongo|mi decisión|haré|haré diferente|dejaré|en lugar de|tomaré|cuando me corrijan|cuando me contradigan|respiraré|pausaré|escucharé|preguntaré|no reaccionar|antes de|primero|el paso que|la acción que/i.test(t);
-
-    // 5. Tono — solo queja/víctima sin nada propositivo
-    const soloQueja = tieneQueja && !tieneDecision && !tienePatron;
-
-    // ── PUNTUACIÓN ──
     if (soloQueja || (!tienePatron && !tieneEfecto && !tieneDecision)) {
         puntaje = words < 10 ? 0 : 1;
     } else {
@@ -741,154 +718,178 @@ function evaluarRespuesta() {
         if (tienePatron)   puntaje += 1.2;
         if (tieneEfecto)   puntaje += 1.2;
         if (tieneDecision) puntaje += 1.6;
-        if (tieneQueja)    puntaje = Math.max(1, puntaje - 1);
+        if (tieneQueja)    puntaje  = Math.max(1, puntaje - 1);
         puntaje = Math.round(puntaje);
-        if (puntaje > 5) puntaje = 5;
+        if (puntaje > 5)   puntaje  = 5;
     }
-
     if (words < 15 && puntaje > 2) puntaje = 2;
-    if (words < 8)  puntaje = Math.min(puntaje, 1);
+    if (words < 8)                 puntaje  = Math.min(puntaje, 1);
 
-    // ── CRITERIOS ──
     if (soloQueja) {
-        criterios.push({ tipo:'alerta', titulo:'⚠️ Se detecta queja o culpa sin liderazgo', cal:'Tu respuesta expresa frustración o señala a otros, pero no propone ningún cambio. El liderazgo personal empieza cuando tú decides qué harás diferente, no cuando explicas por qué es difícil.', rec:'Agrega una decisión concreta: "A partir de ahora, cuando me corrijan, haré…"' });
+        criterios.push({ tipo:'alerta', titulo:'⚠️ Se detecta queja o culpa sin liderazgo',
+            cal:'Tu respuesta expresa frustración o señala a otros, pero no propone ningún cambio.',
+            rec:'Agrega una decisión concreta: "A partir de ahora, cuando me corrijan, haré…"' });
     }
-
     if (tienePatron) {
-        criterios.push({ tipo:'ok', titulo:'✅ Patrón identificado', cal:'Nombraste la conducta o reacción que reconoces en ti. Ese es el primer paso del liderazgo personal: ver con claridad lo que está pasando.', rec:'' });
+        criterios.push({ tipo:'ok', titulo:'✅ Patrón identificado',
+            cal:'Nombraste la conducta o reacción que reconoces en ti.', rec:'' });
     } else {
-        criterios.push({ tipo:'rec', titulo:'🔹 Falta identificar el patrón', cal:'No queda claro qué conducta o reacción estás reconociendo.', rec:'Empieza con una frase como: "Noto que cuando alguien me contradice, yo…" o "Me doy cuenta de que reacciono…"' });
+        criterios.push({ tipo:'rec', titulo:'🔹 Falta identificar el patrón',
+            cal:'No queda claro qué conducta o reacción estás reconociendo.',
+            rec:'Empieza con: "Noto que cuando alguien me contradice, yo…"' });
     }
-
     if (tieneEfecto) {
-        criterios.push({ tipo:'ok', titulo:'✅ Efecto actual explicado', cal:'Describiste cómo ese patrón te afecta hoy en tu vida o relaciones. Eso muestra conciencia real, no solo teoría.', rec:'' });
+        criterios.push({ tipo:'ok', titulo:'✅ Efecto actual explicado',
+            cal:'Describiste cómo ese patrón te afecta hoy.', rec:'' });
     } else {
-        criterios.push({ tipo:'rec', titulo:'🔹 Falta el efecto actual', cal:'Identificaste el patrón, pero no explicaste cómo te afecta hoy.', rec:'Añade algo como: "Ese patrón me afecta hoy porque…" o "Esto hace que mis relaciones…"' });
+        criterios.push({ tipo:'rec', titulo:'🔹 Falta el efecto actual',
+            cal:'Identificaste el patrón, pero no explicaste cómo te afecta hoy.',
+            rec:'Añade: "Ese patrón me afecta hoy porque…"' });
     }
-
     if (tieneDecision) {
-        criterios.push({ tipo:'ok', titulo:'✅ Decisión concreta propuesta', cal:'Propusiste qué harás diferente. Eso es liderar tu identidad: no solo reconocer el pasado, sino elegir hacia dónde vas.', rec:'' });
+        criterios.push({ tipo:'ok', titulo:'✅ Decisión concreta propuesta',
+            cal:'Propusiste qué harás diferente. Eso es liderar tu identidad.', rec:'' });
     } else {
-        criterios.push({ tipo:'rec', titulo:'🔹 Falta la decisión concreta', cal:'Nombraste el problema pero no propusiste qué harás diferente.', rec:'Cierra con: "A partir de ahora, cuando noten esa reacción en mí, haré…" o "Mi decisión es…"' });
+        criterios.push({ tipo:'rec', titulo:'🔹 Falta la decisión concreta',
+            cal:'Nombraste el problema pero no propusiste qué harás diferente.',
+            rec:'Cierra con: "A partir de ahora haré…"' });
     }
-
     if (lines >= 4 && lines <= 6) {
-        criterios.push({ tipo:'ok', titulo:'✅ Extensión adecuada (4–6 líneas)', cal:'Respondiste dentro del rango pedido. Eso muestra claridad y criterio: ni demasiado corto, ni disperso.', rec:'' });
+        criterios.push({ tipo:'ok', titulo:'✅ Extensión adecuada (4–6 líneas)',
+            cal:'Respondiste dentro del rango pedido.', rec:'' });
     } else if (lines < 4) {
-        criterios.push({ tipo:'rec', titulo:'⚠️ Respuesta muy corta', cal:'Tu respuesta tiene menos de 4 líneas. Puede quedar incompleta.', rec:'Desarrolla los tres elementos: patrón, efecto y decisión, para llegar a las 4–6 líneas.' });
+        criterios.push({ tipo:'rec', titulo:'⚠️ Respuesta muy corta',
+            cal:'Tu respuesta tiene menos de 4 líneas.',
+            rec:'Desarrolla los tres elementos: patrón, efecto y decisión.' });
     } else {
-        criterios.push({ tipo:'rec', titulo:'⚠️ Respuesta muy larga', cal:'Tu respuesta supera las 6 líneas. En liderazgo personal, la claridad importa.', rec:'Sé más directo/a. Quédate con lo esencial: patrón, efecto y decisión concreta.' });
+        criterios.push({ tipo:'rec', titulo:'⚠️ Respuesta muy larga',
+            cal:'Tu respuesta supera las 6 líneas.',
+            rec:'Sé más directo/a. Quédate con lo esencial.' });
     }
 
-    // ── MENSAJE GENERAL ──
-    let nivel = '', nClass = '', mensaje = '';
-    if (puntaje === 5) {
-        nivel = '🌟 Liderazgo personal'; nClass = 'nivel-5';
-        mensaje = '¡Excelente! Tu respuesta muestra los tres elementos del liderazgo personal: identificas el patrón con honestidad, explicas su efecto real hoy y propones una decisión concreta. Ese equilibrio entre conciencia y dirección es exactamente lo que distingue a quien lidera su identidad.';
-    } else if (puntaje === 4) {
-        nivel = '👍 Muy bien logrado'; nClass = 'nivel-4';
-        mensaje = '¡Muy bien! Tu respuesta tiene la estructura correcta. Pequeños ajustes en la precisión del efecto o de la decisión te llevarían al nivel excelente. Revisa las sugerencias arriba.';
-    } else if (puntaje === 3) {
-        nivel = '📖 En proceso'; nClass = 'nivel-3';
-        mensaje = 'Buen esfuerzo. Tu intención es la correcta, pero la respuesta necesita más concreción. Intenta reescribirla usando los tres pasos de la guía. ¡Puedes lograrlo!';
-    } else if (puntaje === 2) {
-        nivel = '⚠️ Necesita mejorar'; nClass = 'nivel-2';
-        mensaje = 'Tu respuesta tiene algunos elementos de conciencia, pero le falta una propuesta clara de cambio. Recuerda: el liderazgo personal no está en ver el problema, sino en decidir qué harás diferente.';
-    } else if (puntaje === 1) {
-        nivel = '🔄 Sin liderazgo aún'; nClass = 'nivel-1';
-        mensaje = 'La respuesta refleja queja o culpa, pero no liderazgo. El reto es mirar tu historia con honestidad y elegir qué harás con ella. Intenta reescribir usando los tres pasos de la guía. ¡Este ejercicio existe exactamente para esto!';
-    } else {
-        nivel = '— Sin respuesta'; nClass = 'nivel-0';
-        mensaje = 'No se detectó una respuesta válida. Escribe tu respuesta como líder aplicando los tres pasos de la guía.';
-    }
+    var nivel = '', nClass = '', mensaje = '';
+    if      (puntaje === 5) { nivel = '🌟 Liderazgo personal';    nClass = 'nivel-5'; mensaje = '¡Excelente! Tu respuesta muestra los tres elementos del liderazgo personal: identificas el patrón con honestidad, explicas su efecto real hoy y propones una decisión concreta.'; }
+    else if (puntaje === 4) { nivel = '👍 Muy bien logrado';       nClass = 'nivel-4'; mensaje = '¡Muy bien! Tu respuesta tiene la estructura correcta. Pequeños ajustes en la precisión del efecto o de la decisión te llevarían al nivel excelente.'; }
+    else if (puntaje === 3) { nivel = '📖 En proceso';             nClass = 'nivel-3'; mensaje = 'Buen esfuerzo. Tu intención es la correcta, pero la respuesta necesita más concreción. Intenta reescribirla usando los tres pasos de la guía.'; }
+    else if (puntaje === 2) { nivel = '⚠️ Necesita mejorar';       nClass = 'nivel-2'; mensaje = 'Tu respuesta tiene algunos elementos de conciencia, pero le falta una propuesta clara de cambio.'; }
+    else if (puntaje === 1) { nivel = '🔄 Sin liderazgo aún';      nClass = 'nivel-1'; mensaje = 'La respuesta refleja queja o culpa, pero no liderazgo. Intenta reescribir usando los tres pasos de la guía.'; }
+    else                    { nivel = '— Sin respuesta';           nClass = 'nivel-0'; mensaje = 'No se detectó una respuesta válida. Escribe tu respuesta como líder aplicando los tres pasos de la guía.'; }
 
-    // ── RENDER PANTALLA ──
-    document.getElementById('numeroPuntaje').innerHTML = `${puntaje}<span class="de-cinco">/5</span>`;
-    document.getElementById('nivelTexto').textContent = nivel;
-    document.getElementById('nivelTexto').className = 'nivel ' + nClass;
+    /* ── RENDER PANTALLA ── */
+    document.getElementById('numeroPuntaje').innerHTML = puntaje + '<span class="de-cinco">/5</span>';
+    document.getElementById('nivelTexto').textContent  = nivel;
+    document.getElementById('nivelTexto').className    = 'nivel ' + nClass;
 
-    let criteriosHTML = '';
-    criterios.forEach(c => {
-        const esAlerta = c.tipo === 'alerta';
-        const recHTML = c.rec ? `<div class="criterio-rec"><strong>💡 Sugerencia:</strong> ${c.rec}</div>` : '';
-        criteriosHTML += `<div class="criterio-item ${esAlerta ? 'criterio-alerta' : ''}">
-            <div class="criterio-titulo">${c.titulo}</div>
-            <div class="criterio-cal">${c.cal}</div>
-            ${recHTML}
-        </div>`;
+    var criteriosHTML = '';
+    criterios.forEach(function(c) {
+        var esAlerta = c.tipo === 'alerta';
+        var recHTML  = c.rec ? '<div class="criterio-rec"><strong>💡 Sugerencia:</strong> ' + c.rec + '</div>' : '';
+        criteriosHTML += '<div class="criterio-item ' + (esAlerta ? 'criterio-alerta' : '') + '">' +
+            '<div class="criterio-titulo">' + c.titulo + '</div>' +
+            '<div class="criterio-cal">'   + c.cal    + '</div>' +
+            recHTML + '</div>';
     });
     document.getElementById('criteriosEvaluacion').innerHTML = criteriosHTML;
-    document.getElementById('mensajeGeneral').textContent = mensaje;
+    document.getElementById('mensajeGeneral').textContent    = mensaje;
 
-    // ── PREPARAR CERTIFICADO ──
-    const hoy = new Date().toLocaleDateString('es-GT', { year:'numeric', month:'long', day:'numeric' });
-    document.getElementById('certFecha').textContent = hoy;
+    /* ── PREPARAR CERTIFICADO ── */
+    var hoy = new Date().toLocaleDateString('es-GT', { year:'numeric', month:'long', day:'numeric' });
+    document.getElementById('certFecha').textContent   = hoy;
     document.getElementById('certPuntaje').textContent = puntaje + '/5';
-    document.getElementById('certNivel').textContent = nivel;
-    document.getElementById('certRespuesta').textContent = texto;
+    document.getElementById('certNivel').textContent   = nivel;
+    /* Usar div#certRespuesta — se llena al descargar con el nombre */
+    var certRespEl = document.getElementById('certRespuesta');
+    certRespEl.textContent = texto;
 
-    let certCrit = '';
-    criterios.forEach(c => {
-        const borderColor = c.tipo === 'alerta' ? '#C0392B' : '#C9A34E';
-        const bgColor = c.tipo === 'alerta' ? 'rgba(192,57,43,0.06)' : 'rgba(201,163,78,0.08)';
-        const recPDF = c.rec ? `<p style="margin-top:6px;padding:7px 10px;background:rgba(201,163,78,0.1);border-left:3px solid #C9A34E;font-size:10px;color:#4B5563;"><strong style="color:#0F2747;">💡 Sugerencia:</strong> ${c.rec}</p>` : '';
-        certCrit += `<div style="margin-bottom:10px;padding:11px 14px;background:${bgColor};border-left:4px solid ${borderColor};border-radius:0 6px 6px 0;">
-            <p style="font-weight:700;color:${c.tipo==='alerta'?'#C0392B':'#0F2747'};margin-bottom:4px;font-size:11px;">${c.titulo}</p>
-            <p style="font-size:10.5px;color:#4B5563;line-height:1.55;">${c.cal}</p>
-            ${recPDF}
-        </div>`;
+    var certCrit = '';
+    criterios.forEach(function(c) {
+        var bColor = c.tipo === 'alerta' ? '#C0392B' : '#C9A34E';
+        var bg     = c.tipo === 'alerta' ? 'rgba(192,57,43,0.06)' : 'rgba(201,163,78,0.08)';
+        var tColor = c.tipo === 'alerta' ? '#C0392B' : '#0F2747';
+        var recPDF = c.rec ? '<div style="margin-top:6px;padding:7px 10px;background:rgba(201,163,78,0.1);border-left:3px solid #C9A34E;font-size:10px;color:#4B5563;"><strong style="color:#0F2747;">💡 Sugerencia:</strong> ' + c.rec + '</div>' : '';
+        certCrit += '<div style="margin-bottom:10px;padding:11px 14px;background:' + bg + ';border-left:4px solid ' + bColor + ';border-radius:0 6px 6px 0;">' +
+            '<div style="font-weight:700;color:' + tColor + ';margin-bottom:4px;font-size:11px;">' + c.titulo + '</div>' +
+            '<div style="font-size:10.5px;color:#4B5563;line-height:1.55;">' + c.cal + '</div>' +
+            recPDF + '</div>';
     });
-    document.getElementById('certCriterios').innerHTML = certCrit;
-    document.getElementById('certMensaje').textContent = mensaje;
+    document.getElementById('certCriterios').innerHTML    = certCrit;
+    document.getElementById('certMensaje').textContent    = mensaje;
 
-    // ── MOSTRAR ──
+    /* ── MOSTRAR RESULTADO ── */
     document.getElementById('resultadoFinal').classList.add('mostrar');
-    setTimeout(() => document.getElementById('resultadoFinal').scrollIntoView({ behavior:'smooth' }), 300);
+    setTimeout(function(){ document.getElementById('resultadoFinal').scrollIntoView({ behavior:'smooth' }); }, 300);
 }
 
+/* ─── DESCARGA ─── */
 function descargarCertificado() {
-    const nombre = prompt('Escribe tu nombre para incluirlo en el certificado:');
+    var nombre = prompt('Escribe tu nombre para incluirlo en el certificado:');
     if (!nombre || nombre.trim() === '') {
         alert('Debes ingresar tu nombre para descargar el certificado.');
         return;
     }
-    document.getElementById('certEstudiante').textContent = nombre.trim();
+    var nombreLimpio = nombre.trim();
+    document.getElementById('certEstudiante').textContent = nombreLimpio;
 
-    const btn = document.getElementById('btnDescargar');
-    btn.disabled = true;
+    var btn = document.getElementById('btnDescargar');
+    btn.disabled    = true;
     btn.textContent = '⏳ Generando certificado…';
 
-    setTimeout(() => {
-        html2canvas(document.getElementById('certificado'), {
-            scale: 2, useCORS: true, allowTaint: true,
-            backgroundColor: '#F7F2E8', logging: false
-        }).then(canvas => {
-            const link = document.createElement('a');
-            link.href = canvas.toDataURL('image/png', 0.95);
-            link.download = `Liderazgo_Clase2_${nombre.trim().replace(/\s+/g,'_')}.png`;
+    /* Mover el certificado a posición visible para que html2canvas lo capture */
+    var cert = document.getElementById('certificado');
+    cert.style.position = 'fixed';
+    cert.style.left     = '0px';
+    cert.style.top      = '0px';
+    cert.style.zIndex   = '9999';
+    cert.style.width    = '860px';
+
+    setTimeout(function() {
+        html2canvas(cert, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#F7F2E8',
+            logging: false,
+            width: 860,
+            windowWidth: 900
+        }).then(function(canvas) {
+            /* Restaurar posición oculta */
+            cert.style.position = 'fixed';
+            cert.style.left     = '-9999px';
+            cert.style.top      = '0px';
+            cert.style.zIndex   = '-1';
+
+            var link      = document.createElement('a');
+            link.href     = canvas.toDataURL('image/png', 0.95);
+            link.download = 'Liderazgo_Clase2_' + nombreLimpio.replace(/\s+/g, '_') + '.png';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            btn.disabled = false;
+
+            btn.disabled  = false;
             btn.innerHTML = '🎓 Descargar mi certificado';
             alert('✅ Certificado descargado como imagen PNG.\n\nCompártelo con tu tutor en la plataforma del curso.');
-        }).catch(err => {
-            btn.disabled = false;
+        }).catch(function(err) {
+            cert.style.position = 'fixed';
+            cert.style.left     = '-9999px';
+            cert.style.top      = '0px';
+            cert.style.zIndex   = '-1';
+            btn.disabled  = false;
             btn.innerHTML = '🎓 Descargar mi certificado';
             alert('❌ Error al generar el certificado. Intenta nuevamente.\n\n' + err.message);
         });
-    }, 300);
+    }, 400);
 }
 
+/* ─── REINICIAR ─── */
 function reiniciar() {
     if (!confirm('¿Deseas limpiar la respuesta y el resultado?')) return;
-    document.getElementById('respuesta').value = '';
-    document.getElementById('cntWords').textContent = '0';
-    document.getElementById('cntWords').className = 'contador-num';
-    document.getElementById('cntLines').textContent = '0';
-    document.getElementById('cntLines').className = 'contador-num';
+    document.getElementById('respuesta').value        = '';
+    document.getElementById('cntWords').textContent   = '0';
+    document.getElementById('cntWords').className     = 'contador-num';
+    document.getElementById('cntLines').textContent   = '0';
+    document.getElementById('cntLines').className     = 'contador-num';
     document.getElementById('resultadoFinal').classList.remove('mostrar');
-    document.getElementById('btnEvaluar').disabled = true;
+    document.getElementById('btnEvaluar').disabled    = true;
     window.scrollTo({ top:0, behavior:'smooth' });
 }
 </script>
